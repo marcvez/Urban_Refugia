@@ -56,7 +56,7 @@ library(factoextra)
 ## PART 1.1: Urbanization index calculation ####
 
 # Map working directory 
-setwd("C:/Users/marc9/Desktop/Marc/CREAF/Urban refugia/Proba_TIF_land_cover")
+setwd("C:/Users/marc9/Desktop/Marc/CREAF/Urban refugia")
 
 # 10x10m raster map (https://worldcover2021.esa.int/data/docs/WorldCover_PUM_V2.0.pdf)
 Eivissa_map <- raster("Eivissa2021.tif")
