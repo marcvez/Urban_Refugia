@@ -25,6 +25,7 @@ install.packages("partR2")
 install.packages("FactoMineR")
 install.packages("vcd")
 install.packages("factoextra")
+install.packages("plot3D")
 
 library(raster)
 library(readr)
@@ -42,6 +43,8 @@ library(partR2)
 library(FactoMineR)
 library(vcd)
 library(factoextra)
+library(plotly)
+library(plot3D)
 
 
 
@@ -176,7 +179,7 @@ par(mfrow = c(1,1))
 
 
 
-## PART 1.2: Urbanization index integration in final data frame ####
+  ## PART 1.2: Urbanization index integration in final data frame ####
 
 # Creation of final data frame, only with meaningful variables
 # ("Date", "Project", "Place", "Site_ID", "State", "Inital_Hour", "Latitude":"Total NA", "Population 2021":"Distance_to_invasion")
@@ -257,10 +260,18 @@ ggplot(data = Urban_Refugia_MVG_seleccio,
                alpha = 0.05)
 
 
-# Standarized histogram: How many times do we have each nº of sightings per census
-hist_values <- Urban_Refugia_MVG_seleccio %>% 
-  group_by(Inv_state, Project, Suma_total) %>%
-  dplyr::summarise(n=n())
+# We create all combinations of these 3 variables
+all_combinations <- expand.grid(Inv_state = unique(Urban_Refugia_MVG_seleccio$Inv_state),
+                                Project = unique(Urban_Refugia_MVG_seleccio$Project),
+                                Suma_total = unique(Urban_Refugia_MVG_seleccio$Suma_total))
+
+# Count the number of times each combination appears in our data 
+hist_values <- all_combinations %>%
+  left_join(Urban_Refugia_MVG_seleccio %>% 
+              group_by(Inv_state, Project, Suma_total) %>%
+              summarise(n = n()), 
+            by = c("Inv_state", "Project", "Suma_total")) %>%
+  mutate(n = ifelse(is.na(n), 0, n))
 
 # Total nº of sightings per experimental scenario
 hist_values <- hist_values %>% 
@@ -283,7 +294,7 @@ names(supp.labs) <- c("NonInvaded", "Invaded")
 
 xaxislab <- expression(paste("Total abundance of ", italic("P. pityusensis"), " per census"))
 
-theme_set(theme_minimal() + theme(legend.position = 'bottom') + theme(text = element_text(size = 17)))
+theme_set(theme_minimal() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
 
 ggplot(hist_values, 
        aes(fill = Project, 
@@ -298,7 +309,12 @@ ggplot(hist_values,
   labs(fill = "Urbanisation situation") +
   scale_fill_manual(values=c("grey80", "red3"),
                     labels=c("Peri-urban", "Urban")) +
-  scale_y_continuous(labels = scales::percent)
+  scale_y_continuous(labels = scales::percent) +
+  theme(axis.title.y = element_text(vjust = 2),
+        axis.title.x = element_text(vjust = -0.5))
+
+
+
 
 
 # Zero distribution
@@ -315,8 +331,131 @@ ggplot(UR_zeros, aes(x = `3P 250 200`)) +
   geom_density()
 
 
+# Urbanization index density plot
+
+urb_complete <- ggplot(Urban_Refugia_MVG_seleccio, aes(x = `Index Urb`)) + 
+  geom_density(fill = "blue", alpha = 0.6, linewidth = 1) +
+  ylab("All sites") +
+  xlab("Urbanization index")
+
+Urban_Refugia_MVG_seleccio_urban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "Urban", ]
+
+urb_urb_complete <- ggplot(Urban_Refugia_MVG_seleccio_urban, aes(x = `Index Urb`)) + 
+  geom_density(fill = "red", alpha = 0.2, linewidth = 1) +
+  ylab("Urban sites") +
+  xlab("Urbanization index")
 
 
+Urban_Refugia_MVG_seleccio_periurban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
+
+urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = `Index Urb`)) + 
+  geom_density(fill = "grey20", alpha = 0.2, linewidth = 1) +
+  ylab("Periurban sites") +
+  xlab("Urbanization index")
+
+
+ggarrange(urb_complete, 
+          ggarrange(urb_urb_complete, urb_periurb_complete, ncol = 1, nrow = 2), 
+          ncol = 2, nrow = 1)
+
+
+
+
+
+# 3D plot Urbanization index (color/size), year of invasion (x), abundance (y), only urban sites
+# We select urban sites
+Urban_data <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "Urban", ]
+
+# Size determines urbanisation index
+ggplot(Urban_data, aes(x = `3P 250 200`, y = Suma_total, size = `Index Urb`)) +
+  geom_point() +
+  labs(x = "Invasion year", y = "Abundance", size = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+# Color determines urbanisation index
+threed_plot_urban <- ggplot(Urban_data, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_point(size = 5) +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+
+ggplot(Urban_data, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_point(size = 5) +
+  geom_smooth(method = "lm", se = T, colour = "black") +  
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = T, colour = "black") +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+# PeriUrban data
+PeriUrban_data <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
+
+threed_plot_periurban <- ggplot(PeriUrban_data, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_point(size = 5) +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+
+ggarrange(threed_plot_urban, threed_plot_periurban,
+          ncol = 1, nrow = 2)
+
+
+# All data
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_point(size = 5) +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`, shape = Project)) +
+  geom_point(size = 5) +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) +
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index", shape = "Project") +
+  theme_minimal() +
+  scale_x_reverse() +
+  guides(shape = guide_legend(title = "Urbanisation category")) + # Esto es opcional para agregar un título a la leyenda de formas
+  scale_shape_manual(values = c(17, 16))
+
+
+
+
+
+
+# Theoretical data source-sink dynamic
+abundancia_max <- 10 # Cambia este valor al máximo deseado
+abundancia_media <- abundancia_max / 2
+
+data_teóricos <- data.frame(
+  x = c(0, abundancia_max),
+  y = c(0, 0),
+  Dynamic = c("Active dispersal dynamic", "Source-Sink dynamic")
+)
+
+data_teóricos <- rbind(data_teóricos, data.frame(x = c(0), y = c(abundancia_max), Dynamic = "Source-Sink dynamic"))
+data_teóricos <- rbind(data_teóricos, data.frame(x = c(0, abundancia_max), y = c(abundancia_media, abundancia_media), Dynamic = "No Source-Sink dynamic"))
+data_teóricos <- rbind(data_teóricos, data.frame(x = c(abundancia_max), y = c(abundancia_max), Dynamic = "Active dispersal dynamic"))
+
+# Plot
+ggplot(data_teóricos, aes(x = x, y = y, color = Dynamic)) +
+  geom_line(linewidth = 1) +
+  scale_x_continuous(breaks = c(0, abundancia_max), labels = c("New", "Old")) +
+  scale_y_continuous(breaks = c(0, abundancia_max), labels = c(0, "Max. abundance")) +
+  labs(x = "Invasion status", y = "Lizard abundance") +
+  theme_classic()
+
+
+
+
+# 3D plot
+plot_ly(data = Urban_data, x = ~`3P 250 200`, y = ~Suma_total, z = ~`Index Urb`)
 
 
 
@@ -1465,9 +1604,9 @@ barCOLS = c("grey30","red3")
 ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=Model, fill=Model)) + 
   geom_linerange(size=5,position=position_dodge(width = 0.5)) +
   geom_hline(yintercept=0, lty=2) +
-  geom_point(size=3, shape=21, colour="white", stroke = 0.5, position=position_dodge(width = 0.5)) +
-  scale_fill_manual(values=barCOLS, labels = c("Truncated-Poisson", "Zero-inflated")) +
-  scale_color_manual(values=dotCOLS, labels = c("Truncated-Poisson", "Zero-inflated")) +
+  geom_point(size=3, shape=21, colour="black", stroke = 0.5, position=position_dodge(width = 0.5)) +
+  scale_fill_manual(values=barCOLS, labels = c("Poisson", "Zero-inflated")) +
+  scale_color_manual(values=dotCOLS, labels = c("Poisson", "Zero-inflated")) +
   scale_x_discrete(name="Fixed factors", limits=rev,  labels=c('Year of invasion', 'Urbanisation index', 'Intercept')) +
   scale_y_continuous(name="Predictor value", limits = c(min(data_ZIP3_Year_Urb$Lower), max(data_ZIP3_Year_Urb$Upper))) +
   expand_limits(y=c(0.1, 50)) + 
@@ -1475,6 +1614,7 @@ ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=
   coord_flip() +
   theme(legend.position="bottom") +
   theme(text = element_text(size = 17))
+
 
 ## PART 6.3: ZITP plot with state of invasion as variable ####
 
@@ -1517,6 +1657,63 @@ ggplot(data_ZITP3_State_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, co
   coord_flip() +
   theme(legend.position="bottom") +
   theme(text = element_text(size = 17))
+
+
+
+
+
+### PART 7: Map ####
+
+Urban_Refugia_MVG_seleccio$Code <- paste0(Urban_Refugia_MVG_seleccio$Inv_state, "_", Urban_Refugia_MVG_seleccio$Project)
+
+split_Code <- split(Urban_Refugia_MVG_seleccio, Urban_Refugia_MVG_seleccio$Code)
+
+coords_inv_periurban <- split_Code$Invaded_PeriUrban %>%
+  dplyr::select(Latitude, Longitude)
+
+coords_inv_urban <- split_Code$Invaded_Urban %>%
+  dplyr::select(Latitude, Longitude)
+
+coords_noninv_periurban <- split_Code$NonInvaded_PeriUrban %>%
+  dplyr::select(Latitude, Longitude)
+
+coords_noninv_urban <- split_Code$NonInvaded_Urban %>%
+  dplyr::select(Latitude, Longitude)
+
+coordinates(coords_inv_periurban) <- ~ Longitude + Latitude
+
+coordinates(coords_inv_urban) <- ~ Longitude + Latitude
+
+coordinates(coords_noninv_periurban) <- ~ Longitude + Latitude
+
+coordinates(coords_noninv_urban) <- ~ Longitude + Latitude
+
+
+buff_inv_periurban <- buffer(coords_inv_periurban, 50, dissolve = F)
+
+buff_inv_urban <- buffer(coords_inv_urban, 50, dissolve = F)
+
+buff_noninv_periurban <- buffer(coords_noninv_periurban, 50, dissolve = F)
+
+buff_noninv_urban <- buffer(coords_noninv_urban, 50, dissolve = F)
+
+colors2 <- c("#89d2a3", "#a7dca5", "#c5ecac", "#fbdf9d", "#e58087", "#d1d1d1", "#dceef3", "#8dc8d8", "#d4bbfc")
+
+# Plotejem tot junt
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xlim = c(1.40, 1.46), ylim = c(38.9, 38.925))
+
+legend(1.4389, 38.925, legend = c("Tree cover", "Shrubland", "Grassland", "Cropland", "Built-up", "Bare/Sparse vegetation", "Snow and ice", "Permanent water bodies", "Herbaceus wetland"), fill = colors2, box.lty = 0, bg = "white")
+
+plot(buff_inv_urban, add = TRUE, lwd = 2, col = paste0("#FF0000", "40"))
+
+plot(buff_inv_periurban, add = TRUE, lwd = 2, col = paste0("#BFBFBE", "40"))
+
+plot(buff_noninv_urban, add = TRUE, lwd = 2, col = paste0("#0027AD", "40"))
+
+plot(buff_noninv_periurban, add = TRUE, lwd = 2, col = paste0("#06CD00", "40"))
+
+
+
 
 
 
