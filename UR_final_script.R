@@ -26,6 +26,8 @@ install.packages("FactoMineR")
 install.packages("vcd")
 install.packages("factoextra")
 install.packages("plot3D")
+install.packages("sf")
+
 
 library(raster)
 library(readr)
@@ -45,7 +47,9 @@ library(vcd)
 library(factoextra)
 library(plotly)
 library(plot3D)
-
+library(ggpubr)
+library(EnvStats)
+library(sf)
 
 
 
@@ -269,9 +273,10 @@ all_combinations <- expand.grid(Inv_state = unique(Urban_Refugia_MVG_seleccio$In
 hist_values <- all_combinations %>%
   left_join(Urban_Refugia_MVG_seleccio %>% 
               group_by(Inv_state, Project, Suma_total) %>%
-              summarise(n = n()), 
+              dplyr::summarise(n = n()), 
             by = c("Inv_state", "Project", "Suma_total")) %>%
   mutate(n = ifelse(is.na(n), 0, n))
+
 
 # Total nº of sightings per experimental scenario
 hist_values <- hist_values %>% 
@@ -357,6 +362,8 @@ urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = `In
 ggarrange(urb_complete, 
           ggarrange(urb_urb_complete, urb_periurb_complete, ncol = 1, nrow = 2), 
           ncol = 2, nrow = 1)
+
+ggarrange(urb_urb_complete, urb_periurb_complete, ncol = 2, nrow = 1)
 
 
 
@@ -456,6 +463,31 @@ ggplot(data_teóricos, aes(x = x, y = y, color = Dynamic)) +
 
 # 3D plot
 plot_ly(data = Urban_data, x = ~`3P 250 200`, y = ~Suma_total, z = ~`Index Urb`)
+
+# Proportion of no-snake traps inside city
+Zones <- c(rep("Outer", 18), rep("Intermediate", 8), rep("Inner", 15))
+
+Total <- c(11, 2, 6, 4, 9, 4, 4, 7, 3, 2, 2, 1, 5, 2, 0, 0, 0, 0, 2, 0, 0, 4, 1, 1, 3, 2, rep(0, 15))  # Por ejemplo, número de serpientes en cada zona
+
+# Crear el data frame
+Trap_eff_zones <- data.frame(Zones = Zones, Total = Total)
+
+media_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = mean)
+total_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = length)
+
+colors <- c("Outer" = "grey", "Intermediate" = "salmon", "Inner" = "darkred")
+
+ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
+  geom_boxplot(alpha = 0.5) +
+  geom_jitter(width = 0.2, height = 0, alpha = 0.8, size = 3) +
+  geom_point(data = media_por_zona, aes(y = Total), color = "black", fill = "white", size = 4, shape = 21) +
+  labs(x = "Zone",
+       y = "Number of snakes captured") +
+  theme_minimal() +
+  scale_fill_manual(values = colors) +
+  theme(legend.position = "none") +
+  stat_n_text(y.pos = NULL, color = "black", text.box = TRUE)
+
 
 
 
@@ -1699,10 +1731,27 @@ buff_noninv_urban <- buffer(coords_noninv_urban, 50, dissolve = F)
 
 colors2 <- c("#89d2a3", "#a7dca5", "#c5ecac", "#fbdf9d", "#e58087", "#d1d1d1", "#dceef3", "#8dc8d8", "#d4bbfc")
 
-# Plotejem tot junt
+# Plotejem everything togheter
+roads <- read_sf(dsn = "C:/Users/marc9/Desktop/Marc/CREAF/Invasion snake/Final_project", layer = "carreteras_ibiza")
+
+roads$clased <- factor(roads$clased, levels = c("Carretera convencional", "Carretera multicarril", "Urbano"))
+
+roads_subset <- subset(roads, clased %in% c("Carretera convencional", "Carretera multicarril", "Urbano"))
+
 plot(Eivissa_map, axes = T, col = colors2, legend = F, xlim = c(1.40, 1.46), ylim = c(38.9, 38.925))
 
-legend(1.4389, 38.925, legend = c("Tree cover", "Shrubland", "Grassland", "Cropland", "Built-up", "Bare/Sparse vegetation", "Snow and ice", "Permanent water bodies", "Herbaceus wetland"), fill = colors2, box.lty = 0, bg = "white")
+colores <- c(rep("black", 3))
+tamanios <- c(2, 2, 0.05)
+
+for (i in 1:length(levels(roads_subset$clased))) {
+  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ]  # Subconjunto de datos para cada nivel de "clased"
+  lines(subset_roads, lwd = tamanios[i], col = colores[i])  # Dibujar las líneas con el color y tamaño de línea correspondientes
+}
+
+
+
+
+legend(1.4455, 38.92498, legend = c("Tree cover", "Shrubland", "Grassland", "Cropland", "Built-up", "Bare/Sparse vegetation", "Snow and ice", "Permanent water bodies", "Herbaceus wetland"), fill = colors2, box.lty = 0, bg = "white")
 
 plot(buff_inv_urban, add = TRUE, lwd = 2, col = paste0("#FF0000", "40"))
 
@@ -1711,6 +1760,8 @@ plot(buff_inv_periurban, add = TRUE, lwd = 2, col = paste0("#BFBFBE", "40"))
 plot(buff_noninv_urban, add = TRUE, lwd = 2, col = paste0("#0027AD", "40"))
 
 plot(buff_noninv_periurban, add = TRUE, lwd = 2, col = paste0("#06CD00", "40"))
+
+
 
 
 
