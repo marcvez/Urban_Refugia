@@ -283,6 +283,8 @@ hist_values <- hist_values %>%
   group_by(Inv_state, Project) %>%
   dplyr::mutate(total=sum(n))
 
+hist_values_violin <-  hist_values
+
 # Summary table of total number of sightings
 hist_values2 <- Urban_Refugia_MVG_seleccio %>% 
   group_by(Inv_state, Project) %>%
@@ -318,8 +320,14 @@ ggplot(hist_values,
   theme(axis.title.y = element_text(vjust = 2),
         axis.title.x = element_text(vjust = -0.5))
 
+# Violin plot (?)
 
-
+# Crear el gráfico de violín
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = Code, y = Suma_total)) +
+  geom_violin(trim = FALSE) +
+  labs(x = "Treatment", y = "Lizard abundance") +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5)) +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2)
 
 
 # Zero distribution
