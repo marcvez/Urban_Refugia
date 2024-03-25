@@ -50,7 +50,7 @@ library(plot3D)
 library(ggpubr)
 library(EnvStats)
 library(sf)
-
+library(viridis)
 
 
 
@@ -330,6 +330,36 @@ ggplot(Urban_Refugia_MVG_seleccio, aes(x = Code, y = Suma_total)) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2)
 
 
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")), y = Suma_total, fill = Code)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
+  labs(x = "", y = "Lizard abundance") +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5)) +
+  geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.6, dodge.width = 0.75, jitter.height = 0.2)) +  
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", fill = "white", stroke = 1, size = 4, position = position_dodge(width = 0.7)) +  
+  scale_fill_manual(values = c( "grey60", "grey30", "tomato1", "red3"),
+                    name = "Treatment", 
+                    breaks=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban"),
+                    labels = c("Non-invaded | Peri-Urban      ", "Non-invaded | Urban      ", "Invaded | Peri-urban      ", "Invaded | Urban     ")) + 
+  scale_x_discrete(labels=c("NI-PU", "NI-U", "I-PU", "I-U")) +
+  guides(fill=guide_legend(ncol=2)) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+
+
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Inv_state, level=c("NonInvaded", "Invaded")), y = Suma_total, fill = Code)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
+  labs(x = "Invasion status", y = "Lizard abundance") +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5)) +  
+  geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.3, dodge.width = 0.75, jitter.height = 0.2)) +
+  stat_summary(fun.y = mean, geom = "point", shape = 19, col = "white", size = 4, position = position_dodge(width = 0.75)) +
+  scale_fill_manual(values = c( "grey60", "grey30", "tomato1", "red3"),
+                    name = "Treatment", 
+                    breaks=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban"),
+                    labels = c("Non-invaded | Peri-Urban      ", "Non-invaded | Urban      ", "Invaded | Peri-urban      ", "Invaded | Urban     ")) + 
+  scale_x_discrete(labels=c("Non-invaded", "Invaded")) +
+  guides(fill=guide_legend(ncol=2)) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+
+
 # Zero distribution
 
 # We select entries with only 0.
@@ -354,17 +384,17 @@ urb_complete <- ggplot(Urban_Refugia_MVG_seleccio, aes(x = `Index Urb`)) +
 Urban_Refugia_MVG_seleccio_urban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "Urban", ]
 
 urb_urb_complete <- ggplot(Urban_Refugia_MVG_seleccio_urban, aes(x = `Index Urb`)) + 
-  geom_density(fill = "red", alpha = 0.2, linewidth = 1) +
-  ylab("Urban sites") +
-  xlab("Urbanization index")
+  geom_density(fill = "grey20", alpha = 0.6, linewidth = 1) +
+  ylab("Urban sites density") +
+  xlab("Urbanisation index")
 
 
 Urban_Refugia_MVG_seleccio_periurban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
 
 urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = `Index Urb`)) + 
-  geom_density(fill = "grey20", alpha = 0.2, linewidth = 1) +
-  ylab("Periurban sites") +
-  xlab("Urbanization index")
+  geom_density(fill = "grey80", alpha = 0.6, linewidth = 1) +
+  ylab("Peri-urban sites density") +
+  xlab("Urbanisation index")
 
 
 ggarrange(urb_complete, 
@@ -390,6 +420,8 @@ ggplot(Urban_data, aes(x = `3P 250 200`, y = Suma_total, size = `Index Urb`)) +
 
 # Color determines urbanisation index
 threed_plot_urban <- ggplot(Urban_data, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_smooth(method = "lm", se = T, colour = "black") +  
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = T, colour = "black") +
   geom_point(size = 5) +
   scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
   labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
@@ -410,6 +442,8 @@ ggplot(Urban_data, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
 PeriUrban_data <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
 
 threed_plot_periurban <- ggplot(PeriUrban_data, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_smooth(method = "lm", se = T, colour = "black") +  
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = T, colour = "black") +
   geom_point(size = 5) +
   scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
   labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
@@ -419,6 +453,172 @@ threed_plot_periurban <- ggplot(PeriUrban_data, aes(x = `3P 250 200`, y = Suma_t
 
 ggarrange(threed_plot_urban, threed_plot_periurban,
           ncol = 1, nrow = 2)
+
+
+
+# Boxplot by year breaks
+
+inferior_limit <- min(Urban_Refugia_MVG_seleccio$`3P 250 200`)
+superior_limit <- max(Urban_Refugia_MVG_seleccio$`3P 250 200`)
+
+break_year <- (superior_limit - inferior_limit)/4
+
+groups <- seq(inferior_limit, superior_limit, by = break_year)
+
+for(i in 1:nrow(Urban_Refugia_MVG_seleccio)){
+  
+  if(Urban_Refugia_MVG_seleccio$`3P 250 200`[i] <= groups[2]){
+    
+    Urban_Refugia_MVG_seleccio$Year_group[i] <- "D"
+    
+  } else if(Urban_Refugia_MVG_seleccio$`3P 250 200`[i] > groups[2] & Urban_Refugia_MVG_seleccio$`3P 250 200`[i] <= groups[3]){
+    
+    Urban_Refugia_MVG_seleccio$Year_group[i] <- "C"
+    
+  }else if(Urban_Refugia_MVG_seleccio$`3P 250 200`[i] > groups[3] & Urban_Refugia_MVG_seleccio$`3P 250 200`[i] <= groups[4]){
+    
+    Urban_Refugia_MVG_seleccio$Year_group[i] <- "B"
+    
+  }else if(Urban_Refugia_MVG_seleccio$`3P 250 200`[i] > groups[4]){
+    
+    Urban_Refugia_MVG_seleccio$Year_group[i] <- "A"
+    
+  }
+  
+}
+
+
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = Year_group, y = Suma_total, fill = Project)) +
+  geom_boxplot(alpha = 0.8, outliers = FALSE) +
+  geom_jitter(shape = 16, col = "black", size = 0.8, position = position_jitterdodge(jitter.width = 0.5, dodge.width = 0.75, jitter.height = 0.2)) +
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", stroke = 1, size = 3, position = position_dodge(width = 0.75), alpha = 1) +
+  labs(x = "Grupos", y = "Lizard abundance", fill = "Urbanisation") +
+  scale_x_discrete(labels=c("Non-invaded", "0-3 years", "3-6 years", "6-9 years")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE) +
+  scale_fill_manual(values = c("grey80", "grey20"))
+
+
+
+
+
+# Boxplot by year breaks (non-invaded + 3 categories)
+
+Urban_Refugia_MVG_seleccio_non_invaded <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Inv_state %in% c("NonInvaded"), ]
+
+Urban_Refugia_MVG_seleccio_invaded <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Inv_state %in% c("Invaded"), ]
+
+Urban_Refugia_MVG_seleccio_non_invaded$Year_group <- "A"
+
+
+
+inferior_limit <- min(Urban_Refugia_MVG_seleccio_invaded$`3P 250 200`)
+superior_limit <- max(Urban_Refugia_MVG_seleccio_invaded$`3P 250 200`)
+
+break_year <- (superior_limit - inferior_limit)/3
+
+groups <- seq(inferior_limit, superior_limit, by = break_year)
+
+for(i in 1:nrow(Urban_Refugia_MVG_seleccio_invaded)){
+  
+  if(Urban_Refugia_MVG_seleccio_invaded$`3P 250 200`[i] <= groups[2]){
+    
+    Urban_Refugia_MVG_seleccio_invaded$Year_group[i] <- "D"
+    
+  } else if(Urban_Refugia_MVG_seleccio_invaded$`3P 250 200`[i] > groups[2] & Urban_Refugia_MVG_seleccio_invaded$`3P 250 200`[i] <= groups[3]){
+    
+    Urban_Refugia_MVG_seleccio_invaded$Year_group[i] <- "C"
+    
+  }else if(Urban_Refugia_MVG_seleccio_invaded$`3P 250 200`[i] > groups[3]){
+    
+    Urban_Refugia_MVG_seleccio_invaded$Year_group[i] <- "B"
+    
+  }
+  
+}
+
+
+Urban_Refugia_MVG_seleccio_inv_noninv_joined <- rbind(Urban_Refugia_MVG_seleccio_invaded, Urban_Refugia_MVG_seleccio_non_invaded)
+
+
+
+ggplot(Urban_Refugia_MVG_seleccio_inv_noninv_joined, aes(x = Year_group, y = Suma_total, fill = Project)) +
+  facet_wrap(~ Project, labeller = labeller(Project = supp.labs)) +
+  geom_boxplot(alpha = 0.8, outliers = FALSE) +
+  geom_jitter(shape = 16, col = "black", size = 0.8, position = position_jitterdodge(jitter.width = 0.5, dodge.width = 0.75, jitter.height = 0.2)) +
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", stroke = 1, bg = "white", size = 3, position = position_dodge(width = 0.75), alpha = 1) +
+  labs(x = "Invasion status", y = "Lizard abundance", fill = "Urbanisation") +
+  scale_x_discrete(labels=c("Non-\ninvaded", "2022-\n-2019", "2019-\n-2016", "2016-\n-2013")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE) +
+  scale_fill_manual(values = c("grey80", "grey20"))
+
+ggplot(Urban_Refugia_MVG_seleccio_inv_noninv_joined, aes(x = Year_group, y = Suma_total, fill = Project)) +
+  geom_boxplot(alpha = 0.8, outliers = FALSE) +
+  geom_jitter(shape = 16, col = "black", size = 0.8, position = position_jitterdodge(jitter.width = 0.5, dodge.width = 0.75, jitter.height = 0.2)) +
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", stroke = 1, size = 3, position = position_dodge(width = 0.75), alpha = 1) +
+  labs(x = "Invasion status", y = "Lizard abundance", fill = "Urbanisation") +
+  scale_x_discrete(labels=c("Non-\ninvaded", "2022-\n-2019", "2019-\n-2016", "2016-\n-2013")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE) +
+  scale_fill_manual(values = c("grey80", "grey20"))
+
+
+Urban_Refugia_MVG_seleccio_inv_noninv_urban <- Urban_Refugia_MVG_seleccio_inv_noninv_joined[Urban_Refugia_MVG_seleccio_inv_noninv_joined$Project %in% c("Urban"), ]
+
+
+Urban_Refugia_MVG_seleccio_inv_noninv_periurban <- Urban_Refugia_MVG_seleccio_inv_noninv_joined[Urban_Refugia_MVG_seleccio_inv_noninv_joined$Project %in% c("PeriUrban"), ]
+
+# ANOVA urban
+anova_urban <- aov(Suma_total ~ Year_group, data = Urban_Refugia_MVG_seleccio_inv_noninv_urban)
+
+summary(anova_urban)
+
+TukeyHSD(anova_urban, conf.level = 0.95)
+
+plot(TukeyHSD(anova_urban, conf.level = 0.95), las = 2)
+
+
+# ANOVA periurban
+anova_periurban <- aov(Suma_total ~ Year_group, data = Urban_Refugia_MVG_seleccio_inv_noninv_periurban)
+
+summary(anova_periurban)
+
+TukeyHSD(anova_periurban, conf.level = 0.95)
+
+  plot(TukeyHSD(anova_periurban, conf.level = 0.95), las = 2)
+
+
+
+
+
+# Point plot joined only invaded
+
+Urban_data_inv <- Urban_data[Urban_data$Inv_state %in% c("Invaded"), ]
+
+PeriUrban_data_inv <- PeriUrban_data[PeriUrban_data$Inv_state %in% c("Invaded"), ]
+
+
+threed_plot_urban_inv <- ggplot(Urban_data_inv, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_smooth(method = "lm", se = T, colour = "black") +  
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = T, colour = "black") +
+  geom_point(size = 5) +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+
+threed_plot_periurban_inv <- ggplot(PeriUrban_data_inv, aes(x = `3P 250 200`, y = Suma_total, color = `Index Urb`)) +
+  geom_smooth(method = "lm", se = T, colour = "black") +  
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = T, colour = "black") +
+  geom_point(size = 5) +
+  scale_color_gradient(low = viridis(2)[2], high = viridis(2)[1]) + 
+  labs(x = "Invasion year", y = "Abundance", color = "Urbanization index") +
+  theme_minimal() + 
+  scale_x_reverse()
+
+ggarrange(threed_plot_urban_inv, threed_plot_periurban_inv,
+          ncol = 1, nrow = 2)
+
+
 
 
 # All data
@@ -444,6 +644,8 @@ ggplot(Urban_Refugia_MVG_seleccio, aes(x = `3P 250 200`, y = Suma_total, color =
 
 
 
+
+
 # Theoretical data source-sink dynamic
 abundancia_max <- 10 # Cambia este valor al máximo deseado
 abundancia_media <- abundancia_max / 2
@@ -457,6 +659,8 @@ data_teóricos <- data.frame(
 data_teóricos <- rbind(data_teóricos, data.frame(x = c(0), y = c(abundancia_max), Dynamic = "Source-Sink dynamic"))
 data_teóricos <- rbind(data_teóricos, data.frame(x = c(0, abundancia_max), y = c(abundancia_media, abundancia_media), Dynamic = "No Source-Sink dynamic"))
 data_teóricos <- rbind(data_teóricos, data.frame(x = c(abundancia_max), y = c(abundancia_max), Dynamic = "Active dispersal dynamic"))
+
+theme_set(theme_minimal() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
 
 # Plot
 ggplot(data_teóricos, aes(x = x, y = y, color = Dynamic)) +
@@ -483,18 +687,19 @@ Trap_eff_zones <- data.frame(Zones = Zones, Total = Total)
 media_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = mean)
 total_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = length)
 
-colors <- c("Outer" = "grey", "Intermediate" = "salmon", "Inner" = "darkred")
+colors <- c("Outer" = "grey80", "Intermediate" = "grey50", "Inner" = "grey20")
+
+theme_set(theme_minimal() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
 
 ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
-  geom_boxplot(alpha = 0.5) +
-  geom_jitter(width = 0.2, height = 0, alpha = 0.8, size = 3) +
+  geom_boxplot(alpha = 0.8, outliers = FALSE) +
+  geom_jitter(shape = 16, size = 2, position = position_jitterdodge(jitter.width = 0.4, dodge.width = 0.75, jitter.height = 0.2)) +
   geom_point(data = media_por_zona, aes(y = Total), color = "black", fill = "white", size = 4, shape = 21) +
-  labs(x = "Zone",
-       y = "Number of snakes captured") +
-  theme_minimal() +
+  labs(x = expression("Sampled area (1.5 km"^{2}~")"),
+       y = "Captured snakes per trap") +
   scale_fill_manual(values = colors) +
-  theme(legend.position = "none") +
-  stat_n_text(y.pos = NULL, color = "black", text.box = TRUE)
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+
 
 
 
@@ -598,7 +803,14 @@ UR_no_zeros <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Suma_total 
 
 fpois((UR_no_zeros$Suma_total))
 
+plot(density(UR_no_zeros$Suma_total))
+
 hist(UR_no_zeros$Suma_total)
+
+lines(0:14, dpois(0:14, lambda = 1), type = "l")
+
+plot(0:14, dpois(0:14, lambda = 1), type = "l")
+
 
 # variance is greater than mean, so no simple Poisson distribution is followed
 
@@ -616,13 +828,22 @@ length(Urban_Refugia_MVG_seleccio$Suma_total[Urban_Refugia_MVG_seleccio$Suma_tot
 #max(Urban_Refugia_MVG_seleccio$`3P 250 200`)
 
 
-# Invert year of invasion variable. Substract maximum year (present) and do absolute value. Now it means years from the present.
+# Invert year of invasion variable. Substract maximum year (present) and do absolute value. Now it means years from the present, and divide by diff in years in order to obtain a 0-1 index
+
+
+Urban_Refugia_MVG_seleccio_backup <- Urban_Refugia_MVG_seleccio
+
+Urban_Refugia_MVG_seleccio <- Urban_Refugia_MVG_seleccio_backup
+
+
 
 Urban_Refugia_MVG_seleccio$`3P 250 200` <- Urban_Refugia_MVG_seleccio$`3P 250 200` - max(Urban_Refugia_MVG_seleccio$`3P 250 200`)
 
+diff_years <- max(Urban_Refugia_MVG_seleccio$`3P 250 200`) - min(Urban_Refugia_MVG_seleccio$`3P 250 200`)
+
 Urban_Refugia_MVG_seleccio$`3P 250 200` <- abs(Urban_Refugia_MVG_seleccio$`3P 250 200`)
 
-Urban_Refugia_MVG_seleccio$`3P 250 200` <- Urban_Refugia_MVG_seleccio$`3P 250 200`/10
+Urban_Refugia_MVG_seleccio$`3P 250 200` <- Urban_Refugia_MVG_seleccio$`3P 250 200`/diff_years
 
 
 
@@ -938,6 +1159,15 @@ ZIP3_Year_Urb <- glmmTMB(
 summary(ZIP3_Year_Urb)
 
 
+ZIP3_Year_Urb_int <- glmmTMB(
+  Suma_total ~ `3P 250 200` * Urbanization_index + (1 | Place/Site_ID),
+  ziformula = ~ `3P 250 200` * Urbanization_index, 
+  family = poisson(link = "log"), 
+  data = Urban_Refugia_MVG_seleccio
+)
+summary(ZIP3_Year_Urb_int)
+
+
 # Year of invasion or not
 PandZIP_results <- sjPlot:: tab_model(ZITP3_State_Urb, ZITP3_Year_Urb, ZITP3_Year_Urb_int,  ZITP3_Year_Urb_State,
                                       show.aicc = TRUE, 
@@ -977,7 +1207,7 @@ summary(ZITNB3_Year_Urb)
 ZITNB3_Year_Urb_int <- glmmTMB(
   Suma_total ~ `3P 250 200` * Urbanization_index + (1 | Place/Site_ID),
   ziformula = ~ `3P 250 200` * Urbanization_index, 
-  family = truncated_nbinom1, 
+  family = truncated_nbinom2(), 
   data = Urban_Refugia_MVG_seleccio
 )
 summary(ZITNB3_Year_Urb_int)
@@ -991,15 +1221,36 @@ ZINB3_Year_Urb <- glmmTMB(
 )
 summary(ZINB3_Year_Urb)
 
+ZINB3_Year_Urb_int <- glmmTMB(
+  Suma_total ~ `3P 250 200` * Urbanization_index + (1 | Place/Site_ID),
+  ziformula = ~ `3P 250 200` * Urbanization_index, 
+  family = nbinom2, 
+  data = Urban_Refugia_MVG_seleccio
+)
+summary(ZINB3_Year_Urb_int)
 
-sjPlot::tab_model(ZITP3_Year_Urb, ZITNB3_Year_Urb, ZIP3_Year_Urb,
+
+sjPlot::tab_model(ZITP3_Year_Urb, ZITNB3_Year_Urb, ZIP3_Year_Urb, ZINB3_Year_Urb,
                   show.aicc = TRUE, 
                   show.obs = FALSE, 
                   show.ngroups = FALSE, 
                   p.style = "stars",
                   transform = NULL,
                   show.intercept = TRUE,
-                  dv.labels = c("ZITP", "ZITNB", "ZIP"),
+                  dv.labels = c("ZITP", "ZITNB", "ZIP", "ZINB"),
+                  string.p = "p-value",
+                  string.est = "Incidence Rate Ratios")
+
+
+# 8 best models
+sjPlot::tab_model(ZITP3_Year_Urb, ZITP3_Year_Urb_int,  ZITNB3_Year_Urb, ZITNB3_Year_Urb_int, ZIP3_Year_Urb, ZIP3_Year_Urb_int,  ZINB3_Year_Urb, ZINB3_Year_Urb_int,
+                  show.aicc = TRUE, 
+                  show.obs = FALSE, 
+                  show.ngroups = FALSE, 
+                  p.style = "stars",
+                  transform = NULL,
+                  show.intercept = TRUE,
+                  dv.labels = c("ZITP", "ZITP int", "ZITNB", "ZITNB int", "ZIP", "ZIP int", "ZINB", "ZINB int"),
                   string.p = "p-value",
                   string.est = "Incidence Rate Ratios")
 
@@ -1746,20 +1997,40 @@ roads$clased <- factor(roads$clased, levels = c("Carretera convencional", "Carre
 
 roads_subset <- subset(roads, clased %in% c("Carretera convencional", "Carretera multicarril", "Urbano"))
 
-plot(Eivissa_map, axes = T, col = colors2, legend = F, xlim = c(1.40, 1.46), ylim = c(38.9, 38.925))
+traps <- read_sf(dsn = "C:/Users/marc9/Desktop/Marc/CREAF/Snake Life History/COFIB data", layer = "COFIB_2022")
+
+
+
+
+op <- par(cex = 1)
+
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xlim = c(1.40, 1.46), ylim = c(38.9, 38.925), xaxt = "n", yaxt = "n")
 
 colores <- c(rep("black", 3))
+
 tamanios <- c(2, 2, 0.05)
 
 for (i in 1:length(levels(roads_subset$clased))) {
-  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ]  # Subconjunto de datos para cada nivel de "clased"
-  lines(subset_roads, lwd = tamanios[i], col = colores[i])  # Dibujar las líneas con el color y tamaño de línea correspondientes
+  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ] 
+  lines(subset_roads, lwd = tamanios[i], col = colores[i]) 
 }
 
 
+colors_traps <- c("black", colorRampPalette(c("#feeae1", "red"))(19))
+
+colors_points <- colors_traps[traps$Captures + 1]
 
 
-legend(1.4455, 38.92498, legend = c("Tree cover", "Shrubland", "Grassland", "Cropland", "Built-up", "Bare/Sparse vegetation", "Snow and ice", "Permanent water bodies", "Herbaceus wetland"), fill = colors2, box.lty = 0, bg = "white")
+points(traps$`LONG (DD)`, traps$`LAT (DD)`, pch = 21, cex = 1.8, bg = colors_points, col = "black", lwd = 2)
+
+
+
+op <- par(cex = 1.2)
+
+legend(1.4412, 38.9246, legend = c("Tree cover", "Shrubland", "Grassland", "Cropland", "Built-up", "Bare/Sparse vegetation", "Snow and ice", "Permanent water bodies", "Herbaceus wetland"), fill = colors2, box.lty = 1, bg = "white", cex = 1)
+
+legend(1.4483, 38.9052, legend = c("Outer", "Intermediate", "Inner"), fill = c("grey80", "grey50", "grey20", box.lty = 1, bg = "white", cex = 1.8))
+
 
 plot(buff_inv_urban, add = TRUE, lwd = 2, col = paste0("#FF0000", "40"))
 
