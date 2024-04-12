@@ -345,6 +345,40 @@ ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_Peri
   stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
 
 
+
+
+
+
+theme_set(theme_classic() + theme(legend.position = 'bottom') + theme(text = element_text(size = 17)))
+
+
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")), y = Suma_total, fill = Code)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
+  labs(x = "", y = "Lizard abundance") +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5), legend.position = "none") +
+  geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.6, dodge.width = 0.75, jitter.height = 0.2)) +  
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", fill = "white", stroke = 1, size = 4, position = position_dodge(width = 0.7)) +  
+  scale_fill_manual(values = c( "grey60", "grey30", "tomato1", "red3"),
+                    name = "Treatment", 
+                    breaks=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")) +
+  scale_x_discrete(labels=c("Non-invaded\nPeri-urban", "Non-invaded\nUrban", "Invaded\nPeri-urban", "Invaded\nUrban")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+
+
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")), y = Suma_total, fill = Code)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
+  labs(x = "\nInvasion and urbanisation status", y = "Lizard abundance") +
+  theme(legend.position = "none", axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+  geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.6, dodge.width = 0.75, jitter.height = 0.2)) +  
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", fill = "white", stroke = 1, size = 4, position = position_dodge(width = 0.7)) +  
+  scale_fill_manual(values = c( "grey60", "grey30", "tomato1", "red3"),
+                    name = "Treatment", 
+                    breaks=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")) +
+  scale_x_discrete(labels=c("", "", "", "")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+
+
+
 ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Inv_state, level=c("NonInvaded", "Invaded")), y = Suma_total, fill = Code)) +
   geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
   labs(x = "Invasion status", y = "Lizard abundance") +
@@ -385,23 +419,30 @@ Urban_Refugia_MVG_seleccio_urban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG
 
 urb_urb_complete <- ggplot(Urban_Refugia_MVG_seleccio_urban, aes(x = `Index Urb`)) + 
   geom_density(fill = "grey20", alpha = 0.6, linewidth = 1) +
-  ylab("Urban sites density") +
-  xlab("Urbanisation index")
+  ylab("Density") +
+  xlab("Urbanisation index") +
+  theme(
+    axis.title.y = element_text(vjust = 2),
+    axis.title.x = element_text(vjust = -0.5)) 
 
 
 Urban_Refugia_MVG_seleccio_periurban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
 
 urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = `Index Urb`)) + 
   geom_density(fill = "grey80", alpha = 0.6, linewidth = 1) +
-  ylab("Peri-urban sites density") +
-  xlab("Urbanisation index")
+  xlim(0, 1) + 
+  ylab("Density") +
+  xlab("Urbanisation index") +
+  theme(
+    axis.title.y = element_text(vjust = 2),
+    axis.title.x = element_text(vjust = -0.5))
 
 
 ggarrange(urb_complete, 
           ggarrange(urb_urb_complete, urb_periurb_complete, ncol = 1, nrow = 2), 
           ncol = 2, nrow = 1)
 
-ggarrange(urb_urb_complete, urb_periurb_complete, ncol = 2, nrow = 1)
+ggarrange(urb_periurb_complete, urb_urb_complete,  ncol = 2, nrow = 1)
 
 
 
@@ -689,16 +730,19 @@ total_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = length)
 
 colors <- c("Outer" = "grey80", "Intermediate" = "grey50", "Inner" = "grey20")
 
-theme_set(theme_minimal() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
+theme_set(theme_classic() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
 
 ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
   geom_boxplot(alpha = 0.8, outliers = FALSE) +
   geom_jitter(shape = 16, size = 2, position = position_jitterdodge(jitter.width = 0.4, dodge.width = 0.75, jitter.height = 0.2)) +
   geom_point(data = media_por_zona, aes(y = Total), color = "black", fill = "white", size = 4, shape = 21) +
-  labs(x = expression("Sampled area (1.5 km"^{2}~")"),
+  labs(x = "",
        y = "Captured snakes per trap") +
   scale_fill_manual(values = colors) +
-  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE) +
+  theme(legend.position = "none",
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
 
 
 
@@ -1864,6 +1908,10 @@ ggplot(data_ZITP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col
   theme(legend.position="bottom") +
   theme(text = element_text(size = 17))
 
+
+
+
+
 ## PART 6.2: ZIP plot with year of invasion as variable ####
 
 sjPlot::tab_model(ZIP3_Year_Urb,
@@ -1882,9 +1930,9 @@ summary(ZIP3_Year_Urb)
 data_ZIP3_Year_Urb <- data.frame(
   Model  = as.factor(c("Poisson", "Poisson", "Poisson", "Zero_inf", "Zero_inf", "Zero_inf")),
   Variable = as.factor(c("Urb_index", "Year_inv", "Intercept", "Urb_index", "Year_inv", "Intercept")),
-  Value = c(0.75, -2.45, 0.33, -1.82, 4.14, -0.91),
-  Lower = c(0.06, -4.32, -0.41, -3.50, 2.09, -1.63),
-  Upper = c(1.44, -0.58, 1.06, -0.14, 6.18, -0.19),
+  Value = c(0.75, -2.68, 0.33, -1.82, 4.53, -0.91),
+  Lower = c(0.06, -4.32, -0.41, -3.50, 2.29, -1.63),
+  Upper = c(1.44, -0.64, 1.06, -0.14, 6.76, -0.19),
   pvalue = as.factor(c("< 0.05", "< 0.05", "> 0.05", "< 0.05", "< 0.001", "< 0.05")))
 
 #define colours for dots and bars
@@ -1898,13 +1946,14 @@ ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=
   geom_point(size=3, shape=21, colour="black", stroke = 0.5, position=position_dodge(width = 0.5)) +
   scale_fill_manual(values=barCOLS, labels = c("Poisson", "Zero-inflated")) +
   scale_color_manual(values=dotCOLS, labels = c("Poisson", "Zero-inflated")) +
-  scale_x_discrete(name="Fixed factors", limits=rev,  labels=c('Year of invasion', 'Urbanisation index', 'Intercept')) +
-  scale_y_continuous(name="Predictor value", limits = c(min(data_ZIP3_Year_Urb$Lower), max(data_ZIP3_Year_Urb$Upper))) +
+  scale_x_discrete(name="Fixed factors", limits=rev,  labels=c('Year of\ninvasion', 'Urbanisation\n index', 'Intercept')) +
+  scale_y_continuous(name="Odds ratio", limits = c(min(data_ZIP3_Year_Urb$Lower), max(data_ZIP3_Year_Urb$Upper))) +
   expand_limits(y=c(0.1, 50)) + 
   guides(color = guide_legend(reverse=TRUE), fill = guide_legend(reverse=TRUE)) +
   coord_flip() +
   theme(legend.position="bottom") +
-  theme(text = element_text(size = 17))
+  theme(text = element_text(size = 17),
+        axis.title.y = element_text(vjust = 2))
 
 
 ## PART 6.3: ZITP plot with state of invasion as variable ####
@@ -2039,6 +2088,53 @@ plot(buff_inv_periurban, add = TRUE, lwd = 2, col = paste0("#BFBFBE", "40"))
 plot(buff_noninv_urban, add = TRUE, lwd = 2, col = paste0("#0027AD", "40"))
 
 plot(buff_noninv_periurban, add = TRUE, lwd = 2, col = paste0("#06CD00", "40"))
+
+
+
+
+
+# same as invasion stauts
+
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xlim = c(1.3988, 1.4436), ylim = c(38.901, 38.9257), xaxt = "n", yaxt = "n")
+
+colores <- c(rep("black", 3))
+
+tamanios <- c(2, 2, 0.05)
+
+for (i in 1:length(levels(roads_subset$clased))) {
+  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ] 
+  lines(subset_roads, lwd = tamanios[i], col = colores[i]) 
+}
+
+
+colors_traps <- c("black", colorRampPalette(c("#feeae1", "red"))(19))
+
+colors_points <- colors_traps[traps$Captures + 1]
+
+
+points(traps$`LONG (DD)`, traps$`LAT (DD)`, pch = 4, cex = 1.7, bg = colors_points, col = "black", lwd = 6)
+
+
+
+
+
+
+
+
+# Example radius urban refugia
+
+colors3 <- c("#89d2a3", "#a7dca5", "#c5ecac", "#fbdf9d", "#e58087",  "#d1d1d1", "#8dc8d8", "#8dc8d8")
+
+plot(Eivissa_map, axes = T, col = colors3, legend = F, xlim = c(1.42, 1.44), ylim = c(38.902, 38.912), xaxt = "n", yaxt = "n")
+
+for (i in 1:length(levels(roads_subset$clased))) {
+  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ] 
+  lines(subset_roads, lwd = tamanios[i], col = colores[i]) 
+}
+
+plot(buff_inv_urban, add = TRUE, lwd = 3)
+
+
 
 
 
