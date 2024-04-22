@@ -377,6 +377,15 @@ ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_Peri
   scale_x_discrete(labels=c("", "", "", "")) +
   stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
 
+aggregate(Suma_total ~ Inv_state + Project, Urban_Refugia_MVG_seleccio, function(x) c(mean = mean(x), sd = sd(x)))
+
+summary(aov(Suma_total ~ Inv_state + Project, data = Urban_Refugia_MVG_seleccio))
+
+summary(aov(Suma_total ~ Code, data = Urban_Refugia_MVG_seleccio))
+
+TukeyHSD(aov(Suma_total ~ Inv_state + Project, data = Urban_Refugia_MVG_seleccio))
+
+TukeyHSD(aov(Suma_total ~ Code, data = Urban_Refugia_MVG_seleccio))
 
 
 ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Inv_state, level=c("NonInvaded", "Invaded")), y = Suma_total, fill = Code)) +
@@ -732,9 +741,16 @@ colors <- c("Outer" = "grey80", "Intermediate" = "grey50", "Inner" = "grey20")
 
 theme_set(theme_classic() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
 
+Trap_eff_zones$Zones <- factor(Trap_eff_zones$Zones, levels = c("Outer", "Intermediate", "Inner"))
+
+aggregate(. ~ Zones, Trap_eff_zones, function(x) c(mean = mean(x), sd = sd(x)))
+
+
+
+
 ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
   geom_boxplot(alpha = 0.8, outliers = FALSE) +
-  geom_jitter(shape = 16, size = 2, position = position_jitterdodge(jitter.width = 0.4, dodge.width = 0.75, jitter.height = 0.2)) +
+  geom_jitter(shape = 16, size = 2, position = position_jitterdodge(jitter.width = 0.5, dodge.width = 0.75, jitter.height = 0.2)) +
   geom_point(data = media_por_zona, aes(y = Total), color = "black", fill = "white", size = 4, shape = 21) +
   labs(x = "",
        y = "Captured snakes per trap") +
@@ -745,6 +761,10 @@ ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
         axis.ticks.x=element_blank())
 
 
+
+summary(aov(Total ~ factor(Zones),data = Trap_eff_zones))
+
+TukeyHSD(aov(Total ~ factor(Zones),data = Trap_eff_zones))
 
 
 
@@ -1320,6 +1340,17 @@ ZIP3_Year_Urb <- glmmTMB(
   data = Urban_Refugia_MVG_seleccio
 )
 summary(ZIP3_Year_Urb)
+
+sjPlot::tab_model(ZIP3_Year_Urb,
+                  show.aicc = TRUE, 
+                  show.obs = FALSE, 
+                  show.ngroups = FALSE, 
+                  p.style = "stars",
+                  transform = NULL,
+                  show.intercept = TRUE,
+                  dv.labels = c("ZIP"),
+                  string.p = "p-value",
+                  string.est = "Incidence Rate Ratios")
 
 
 # ANOVA tests
