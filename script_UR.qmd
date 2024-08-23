@@ -1,0 +1,873 @@
+---
+title: "Urban refugia script"
+author: "Marc Vez-Garzón"
+format: html
+editor: visual
+---
+
+# Urban refugia enhance persistence of an endemic keystone species facing a rapidly spreading invasive predator
+
+#### Marc Vez-Garzón, Sandra Moreno, Guillem Casbas, Victor Colomar, Oriol Lapiedra
+
+This R script collects all the steps followed to achieve the results shown in the article.
+
+## 0. Load required packages
+
+```{r}
+#| warning: false
+library(raster)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(EnvStats)
+library(sf)
+library(ggpubr)
+library(extRemes)
+library(lme4)
+library(performance)
+library(glmmTMB)
+library(DHARMa)
+library(pgirmess)
+```
+
+## 1. Ibiza map
+
+### 1.1. Load map and define sampling points
+
+```{r}
+#| warning: false
+
+# Map working directory 
+setwd("C:/Users/marc9/Desktop/Marc/CREAF/Urban refugia")
+
+# Load 10x10m raster map
+Eivissa_map <- raster("Eivissa2021.tif")
+
+# Load data
+Urban_Refugia_MVG_cens_total_net <- read_csv("UR_new_classifcation_nov_2023_ibiza_inv.csv")
+
+# Sampling points coordinates (long/lat)
+coords <- Urban_Refugia_MVG_cens_total_net %>%
+  dplyr::select(Latitude, Longitude)
+
+# Transform to correct format 
+coordinates(coords) <- ~ Longitude + Latitude
+
+# 50 metres buffer around each sampling point
+buff_shp <- buffer(coords, 50)
+
+```
+
+### 1.2. Calculate urbanization index
+
+```{r}
+#| warning: false
+
+# Extract use of land information from every 10x10m cell inside the 50m buffer
+landcover_eivissa <- raster::extract(Eivissa_map, coords, buffer = 50, df=TRUE)
+
+# Convert to data frame (ID = sampling point | Map = land use category)
+landcover_eivissa <- as.data.frame(landcover_eivissa)
+
+# Summarise by sampling point and land use category (how many 10x10m cells of each type are within each buffer area)
+landcover_eivissa <- landcover_eivissa %>% 
+  group_by(ID, Map) %>%
+  dplyr::summarise(n=n())
+
+# Total number of 10x10m cells within each buffer
+landcover_eivissa <- landcover_eivissa %>% 
+  group_by(ID) %>%
+  dplyr::mutate(total=sum(n))
+
+# Percentage of cells from each category with respect to the total number of cells within each buffer
+landcover_eivissa <- landcover_eivissa %>% 
+  group_by(ID, Map) %>%
+  dplyr::summarise(value=n/total)
+
+# Wide format
+landcover_eivissa <- spread(landcover_eivissa, Map, value)
+
+# Name of each land use category
+landcover_eivissa <- landcover_eivissa %>%
+  dplyr::rename(Tree_cover="10",
+                Shrubland="20",
+                Grassland="30",
+                Cropland="40",
+                Built_up="50",
+                Bare.sparse_vegetation="60",
+                Permanent_water_bodies="80")
+
+# Add Place, Site and Project columns
+landcover_eivissa <- landcover_eivissa %>%
+  add_column(Place = Urban_Refugia_MVG_cens_total_net$Place,
+             Site = Urban_Refugia_MVG_cens_total_net$Site_ID,
+             Project = Urban_Refugia_MVG_cens_total_net$Project)
+
+# Place, Site and Project columns to the beginning of the data frame
+landcover_eivissa <- landcover_eivissa %>%
+  relocate(c(Place, Site, Project), .after = ID)
+
+# NA as 0
+landcover_eivissa[is.na(landcover_eivissa)] <- 0
+
+# Urbanization index (Build/Total)
+landcover_eivissa$Urbanization_index <- landcover_eivissa$Built_up/
+  (landcover_eivissa$Tree_cover + 
+     landcover_eivissa$Shrubland + 
+     landcover_eivissa$Grassland + 
+     landcover_eivissa$Cropland + 
+     landcover_eivissa$Bare.sparse_vegetation + 
+     landcover_eivissa$Built_up)
+
+```
+
+## 2. Lizard censuses
+
+### 2.1. Data set cleaning and exploratory plots
+
+```{r}
+#| warning: false
+
+# Select desired columns
+Urban_Refugia_MVG_seleccio <- Urban_Refugia_MVG_cens_total_net[, c(1, 3, 4, 6, 41, 11:26, 37, 39, 40, 42)]
+
+# Convert factor variables to factor
+Urban_Refugia_MVG_seleccio$Place <- as.factor(Urban_Refugia_MVG_seleccio$Place)
+Urban_Refugia_MVG_seleccio$Project <- as.factor(Urban_Refugia_MVG_seleccio$Project)
+Urban_Refugia_MVG_seleccio$Date <- as.factor(Urban_Refugia_MVG_seleccio$Date)
+Urban_Refugia_MVG_seleccio$Site_ID <- as.factor(Urban_Refugia_MVG_seleccio$Site_ID)
+Urban_Refugia_MVG_seleccio$Inv_state <- as.factor(Urban_Refugia_MVG_seleccio$Inv_state)
+Urban_Refugia_MVG_seleccio$Classifica <- as.factor(Urban_Refugia_MVG_seleccio$Classifica)
+
+
+# Total number of Podarcis per replicate
+Urban_Refugia_MVG_seleccio$Suma_total <- Urban_Refugia_MVG_seleccio$`Total Male` +  
+  Urban_Refugia_MVG_seleccio$`Total Fema` + 
+  Urban_Refugia_MVG_seleccio$`Total Juve` + 
+  Urban_Refugia_MVG_seleccio$`Total NA`
+
+# Reorder variables
+Urban_Refugia_MVG_seleccio <- Urban_Refugia_MVG_seleccio[, c(1:21, 26, 22:25)]
+
+# Merge urbanization index to data frame
+Urban_Refugia_MVG_seleccio$Urbanization_index <- landcover_eivissa$Urbanization_index
+
+# Order of factors
+Urban_Refugia_MVG_seleccio$Inv_state <- factor(Urban_Refugia_MVG_seleccio$Inv_state,
+                                               levels = c("NonInvaded", "Invaded"))
+
+# New variable that merges invasion state and habitat type
+Urban_Refugia_MVG_seleccio$Code <- paste0(Urban_Refugia_MVG_seleccio$Inv_state, "_", Urban_Refugia_MVG_seleccio$Project)
+
+# Set theme
+theme_set(theme_classic() + theme(legend.position = 'bottom') + theme(text = element_text(size = 17)))
+
+# Lizard abundance plot
+ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")), y = Suma_total, fill = Code)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
+  labs(x = "\nInvasion and urbanization status", y = "Lizard abundance") +
+  theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5), legend.position = "none") +
+  geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.6, dodge.width = 0.75, jitter.height = 0.2)) +  
+  stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", fill = "white", stroke = 1, size = 4, position = position_dodge(width = 0.7)) +  
+  scale_fill_manual(values = c( "grey60", "grey30", "tomato1", "red3"),
+                    name = "Treatment", 
+                    breaks=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")) +
+  scale_x_discrete(labels=c("Non-invaded\nPeri-urban", "Non-invaded\nUrban", "Invaded\nPeri-urban", "Invaded\nUrban")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
+
+# Mean and sd for each treatment
+aggregate(Suma_total ~ Inv_state + Project, Urban_Refugia_MVG_seleccio, function(x) c(mean = mean(x), sd = sd(x)))
+
+# Select urban sampling points
+Urban_Refugia_MVG_seleccio_urban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "Urban", ]
+
+# Urbanization index distribution (urban)
+urb_urb_complete <- ggplot(Urban_Refugia_MVG_seleccio_urban, aes(x = `Index Urb`)) + 
+  geom_density(fill = "grey20", alpha = 0.6, linewidth = 1) +
+  ylab("Density") +
+  xlab("Urbanization index \n(Urban sites)") +
+  theme(
+    axis.title.y = element_text(vjust = 2),
+    axis.title.x = element_text(vjust = -0.5)) 
+
+# Select peri-urban sampling points
+Urban_Refugia_MVG_seleccio_periurban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
+
+# Urbanization index distribution (peri-urban)
+urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = `Index Urb`)) + 
+  geom_density(fill = "grey80", alpha = 0.6, linewidth = 1) +
+  xlim(0, 1) + 
+  ylab("Density") +
+  xlab("Urbanization index \n(Peri-urban sites)") +
+  theme(
+    axis.title.y = element_text(vjust = 2),
+    axis.title.x = element_text(vjust = -0.5))
+
+# Plot urbanization index
+ggarrange(urb_periurb_complete, urb_urb_complete,  ncol = 2, nrow = 1)
+```
+
+### 2.2. One-way ANOVA + Tukey's HSD test on lizard abundance
+
+```{r}
+#| warning: false
+
+# One-way ANOVA test
+summary(aov(Suma_total ~ Code, data = Urban_Refugia_MVG_seleccio))
+
+# Tukey's HSD test
+TukeyHSD(aov(Suma_total ~ Code, data = Urban_Refugia_MVG_seleccio))
+
+```
+
+## 3. Zero-inflated Poisson GLMM
+
+### 3.1. Data preparation
+
+```{r}
+#| warning: false
+
+# Percentage of 0 in our data
+length(Urban_Refugia_MVG_seleccio$Suma_total[Urban_Refugia_MVG_seleccio$Suma_total == 0])/
+  nrow(Urban_Refugia_MVG_seleccio) * 100
+
+# Year of invasion index (0: not-invaded / 1: oldest invaded site)
+Urban_Refugia_MVG_seleccio$`3P 250 200` <- Urban_Refugia_MVG_seleccio$`3P 250 200` - max(Urban_Refugia_MVG_seleccio$`3P 250 200`)
+
+diff_years <- max(Urban_Refugia_MVG_seleccio$`3P 250 200`) - min(Urban_Refugia_MVG_seleccio$`3P 250 200`)
+
+Urban_Refugia_MVG_seleccio$`3P 250 200` <- abs(Urban_Refugia_MVG_seleccio$`3P 250 200`)
+
+Urban_Refugia_MVG_seleccio$`3P 250 200` <- Urban_Refugia_MVG_seleccio$`3P 250 200`/diff_years
+
+# Initial GLMM (Poisson)
+P5 <- glmer(Suma_total ~ `3P 250 200` + Urbanization_index + (1 | Place/Site_ID), 
+            family = poisson(), 
+            data = Urban_Refugia_MVG_seleccio, 
+            verbose = FALSE)
+
+summary(P5)
+
+# Overdispersion check: No overdispersion (no need to use negative binomial)
+check_overdispersion(P5)
+
+# Zero inflation check: zero-inflation detected
+check_zeroinflation(P5, tolerance = 0.05)
+```
+
+### 3.2. Zero-inflated Poisson
+
+```{r}
+#| warning: false
+
+# Zero-inflated Poisson
+ZIP3_Year_Urb <- glmmTMB(
+  Suma_total ~ `3P 250 200` + Urbanization_index + (1 | Place/Site_ID),
+  ziformula = ~ `3P 250 200` + Urbanization_index, 
+  family = poisson(link = "log"), 
+  data = Urban_Refugia_MVG_seleccio
+)
+
+summary(ZIP3_Year_Urb)
+
+# Zero-inflated Poisson results (table)
+sjPlot::tab_model(ZIP3_Year_Urb,
+                  show.aicc = TRUE, 
+                  show.obs = FALSE, 
+                  show.ngroups = FALSE, 
+                  p.style = "stars",
+                  transform = NULL,
+                  show.intercept = TRUE,
+                  dv.labels = c("ZIP"),
+                  string.p = "p-value",
+                  string.est = "Incidence Rate Ratios")
+
+# Data frame preparation for results visualization
+data_ZIP3_Year_Urb <- data.frame(
+  Model  = as.factor(c("Poisson", "Poisson", "Poisson", "Zero_inf", "Zero_inf", "Zero_inf")),
+  Variable = as.factor(c("Urb_index", "Year_inv", "Intercept", "Urb_index", "Year_inv", "Intercept")),
+  Value = c(0.75, -2.68, 0.33, -1.82, 4.53, -0.91),
+  Lower = c(0.06, -4.32, -0.41, -3.50, 2.29, -1.63),
+  Upper = c(1.44, -0.64, 1.06, -0.14, 6.76, -0.19),
+  pvalue = as.factor(c("< 0.05", "< 0.05", "> 0.05", "< 0.05", "< 0.001", "< 0.05")))
+
+dotCOLS = c("grey80","tomato1")
+barCOLS = c("grey30","red3")
+
+# Zero-inflated Poisson model plot
+ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=Model, fill=Model)) + 
+  geom_linerange(size=5,position=position_dodge(width = 0.5)) +
+  geom_hline(yintercept=0, lty=2) +
+  geom_point(size=3, shape=21, colour="black", stroke = 0.5, position=position_dodge(width = 0.5)) +
+  scale_fill_manual(values=barCOLS, labels = c("Poisson", "Zero-inflated")) +
+  scale_color_manual(values=dotCOLS, labels = c("Poisson", "Zero-inflated")) +
+  scale_x_discrete(name="Fixed factors", limits=rev,  labels=c('Year of\ninvasion', 'Urbanization\n index', 'Intercept')) +
+  scale_y_continuous(name="Odds ratio", limits = c(min(data_ZIP3_Year_Urb$Lower), max(data_ZIP3_Year_Urb$Upper))) +
+  expand_limits(y=c(0.1, 50)) + 
+  guides(color = guide_legend(reverse=TRUE), fill = guide_legend(reverse=TRUE)) +
+  coord_flip() +
+  theme(legend.position="bottom") +
+  theme(text = element_text(size = 17),
+        axis.title.y = element_text(vjust = 2))
+```
+
+### 3.3. Zero-inflated + Poisson part ANOVAs
+
+```{r}
+#| warning: false
+
+# Zero-inflated part's ANOVA
+glmmTMB:::Anova.glmmTMB(ZIP3_Year_Urb, 
+                        type = 2, 
+                        test.statistic = "Chisq", 
+                        component = "zi")
+
+# Poisson part's ANOVA
+glmmTMB:::Anova.glmmTMB(ZIP3_Year_Urb, 
+                        type = 2, 
+                        test.statistic = "Chisq", 
+                        component = "cond")
+```
+
+## 4. Spatial autocorrelation
+
+```{r}
+#| warning: false
+
+# Extract residuals
+res_ZIP3 <- as.data.frame(residuals(ZIP3_Year_Urb))
+
+colnames(res_ZIP3) <- c("residuals_P3")
+
+# Add columns of interest
+res_ZIP3 <- res_ZIP3 %>%
+  add_column(Place = Urban_Refugia_MVG_cens_total_net$Place,
+             Site = Urban_Refugia_MVG_cens_total_net$Site_ID,
+             Project = Urban_Refugia_MVG_cens_total_net$Project,
+             Latitude = Urban_Refugia_MVG_seleccio$Latitude,
+             Longitude = Urban_Refugia_MVG_seleccio$Longitude)
+
+# Move the new columns to the beginning
+res_ZIP3 <- res_ZIP3 %>%
+  relocate(c(Place, Site, Project, Latitude, Longitude), .before = residuals_P3)
+
+# Delete duplications
+res_ZIP3 <- res_ZIP3 %>% group_by(Place, Site, Latitude, Longitude) %>%
+  dplyr::summarise(across(c(residuals_P3), list(mean)))
+
+# Spatial autocorrelation visualization
+correlog_ZIP3 <- pgirmess::correlog(res_ZIP3[, c(4, 3)], res_ZIP3$residuals_P3_1, method="Moran", nbclass = NULL)
+
+plot(correlog_ZIP3)
+
+
+# Distance matrix between sampling points
+dist_matrix <- dist(res_ZIP3[, c(3, 4)], diag = T, upper = T)
+
+dist_matrix <- as.data.frame(as.matrix(dist_matrix))
+
+# Moran's I test for distance-based autocorrelation
+testSpatialAutocorrelation(res_ZIP3$residuals_P3_1,
+                           distMat = dist_matrix)
+```
+
+## 5. Urban filtering
+
+### 5.1. Load data and exploratory plots
+
+```{r}
+#| warning: false
+
+# Load snake captures
+Traps_snake <- read_delim("Traps_snake.csv", 
+                          delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+# Manual data set, in case file is not available
+Zones <- c(rep("Outer", 18), rep("Intermediate", 8), rep("Inner", 15))
+
+Total <- c(11, 2, 6, 4, 9, 4, 4, 7, 3, 2, 2, 1, 5, 2, 0, 0, 0, 0, 2, 0, 0, 4, 1, 1, 3, 2, rep(0, 15))
+
+# Create data frame
+Traps_snake <- data.frame(Zones = Zones, Total = Total)
+
+# Mean and sd per treatment
+media_por_zona <- aggregate(Total ~ Zones, data = Traps_snake, FUN = mean)
+total_por_zona <- aggregate(Total ~ Zones, data = Traps_snake, FUN = length)
+
+# Set theme
+colors <- c("Outer" = "grey80", "Intermediate" = "grey50", "Inner" = "grey20")
+
+theme_set(theme_classic() + theme(legend.position = 'bottom') + theme(text = element_text(size = 15)))
+
+# Convert column "Zones" into factor
+Traps_snake$Zones <- factor(Traps_snake$Zones, levels = c("Outer", "Intermediate", "Inner"))
+
+# Snake captures plot
+ggplot(Traps_snake, aes(x = Zones, y = Total, fill = Zones)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +
+  geom_jitter(shape = 16, size = 2, position = position_jitterdodge(jitter.width = 0.5, dodge.width = 0.75, jitter.height = 0.2)) +
+  geom_point(data = media_por_zona, aes(y = Total), color = "black", fill = "white", size = 4, shape = 21) +
+  labs(x = "",
+       y = "Captured snakes per trap") +
+  scale_fill_manual(values = colors) +
+  scale_x_discrete(labels=c("Outer area", "Intermediate area", "Inner area")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE) +
+  theme(legend.position = "none",
+        axis.ticks.x = element_blank())
+
+aggregate(. ~ Zones, Traps_snake, function(x) c(mean = mean(x), sd = sd(x)))
+
+```
+
+### 5.2. One-way ANOVA + Tukey's HSD test on snake captures
+
+```{r}
+#| warning: false
+
+summary(aov(Total ~ factor(Zones),data = Traps_snake))
+
+TukeyHSD(aov(Total ~ factor(Zones),data = Traps_snake))
+```
+
+## 6. Source-sink dynamic model
+
+```{r}
+#| warning: false
+#| eval: false
+
+source_sink_plot <- function(){
+  
+  # Visualization plot
+  lizard_multiplot <- function(n_rep = 10, # Number of replicates
+                               initial_pop = 300, # Initial number of individuals
+                               n_generations = 41, # Number of generations the simulation is going to last
+                               cat_pred = 0.10, # % of the total population that anthropogenic activities kill every year
+                               snake_pred = 0.50, # % of the total population that snakes kill every year
+                               snake_intro = 21, # Year that the snake has been introduced into the ecosystem
+                               k = 300, # Carrying capacity
+                               urban_index = 0, # Urbanization index
+                               emigration_perc = 0 ){ # % of individuals of the carrying capacity that inmigrate
+    
+    # Create data frame to store number of individuals of each population during each simulation, together with the average number of individuals per generation
+    all_simulations <- as.data.frame(matrix(NA, nrow = n_rep + 1, ncol = n_generations))
+    
+    # Create vector to store the generation number of the first extinct population
+    extinction_gens <- rep(NA, n_rep)
+    
+    for(x in 1:n_rep){
+      
+      # Execute simulation x times
+      lizard_projection_no_plot(initial_pop = initial_pop, 
+                                n_generations = n_generations, 
+                                cat_pred = cat_pred, 
+                                snake_pred = snake_pred, 
+                                snake_intro = snake_intro, 
+                                k = k, 
+                                urban_index = urban_index,
+                                emigration_perc = emigration_perc)
+      
+      # Store number of individuals to the correspondant row
+      all_simulations[x, ] <- n_ind_pop
+      
+      # Store the generation number where each population has become extinct (if it applies)
+      extinction_gen <- which(n_ind_pop <= 0)[1]
+      if (!is.na(extinction_gen)) {
+        extinction_gens[x] <- extinction_gen
+      }
+    }
+    
+    # Average number of individuals per generation
+    all_simulations[n_rep + 1, ] <- colMeans(all_simulations[1:n_rep, ])
+    
+    # Find the generation number of the first population that has become extinct
+    first_extinction_gen <- min(extinction_gens, na.rm = TRUE)
+    
+    # Find the generation number of the last population that has become extinct
+    avg_extinction_gen <- which(all_simulations[n_rep + 1, ] <= 0)[1]
+    
+    # Find the generation number where 50% of the populations are extinct
+    half_extinction_gen <- NA
+    for (gen in 1:n_generations) {
+      if (sum(all_simulations[1:n_rep, gen] <= 0) >= n_rep / 2) {
+        half_extinction_gen <- gen
+        break
+      }
+    }
+    
+    assign("all_simulations", all_simulations, envir=globalenv())
+    
+    # Plot number of individuals per generation of all simulations
+    plot(NULL, xlim = c(1, n_generations), ylim = c(0, (k + 50)), xlab = "Years", ylab = "Nº ind", xaxt = "n", cex.lab = 1.5, cex.axis = 1.5)
+    axis(1, at = c(1, 11, 21, 31, 41, 51, 61), labels = c("-40", "-30", "-20", "-10", "0", "+10", "+20"), cex.axis = 1.5)
+    
+    for(x in 1:n_rep){
+      lines(1:n_generations, all_simulations[x, ], type = "l", col = "grey", lwd = 1)
+    }
+    
+    lines(1:n_generations, all_simulations[n_rep + 1, ], type = "l", col = "black", lwd = 3)
+    
+    # Draw red line when the snake is introduced into the ecosystem
+    abline(v = snake_intro, col = "red3", lty = "solid")
+    
+    # Add vertical dashed line for all 3 types of extinction (first, 50%, and last)
+    if (!is.na(first_extinction_gen)) {
+      abline(v = first_extinction_gen, col = "grey60", lty = "dashed")
+    }
+    
+    if (!is.na(half_extinction_gen)) {
+      abline(v = half_extinction_gen, col = "grey40", lty = "dotdash")
+    }
+    
+    if (!is.na(avg_extinction_gen)) {
+      abline(v = avg_extinction_gen, col = "grey20", lty = "longdash")
+    }
+  }
+  
+  # Popuation simulation
+  lizard_projection_no_plot <- function(initial_pop = 100, n_generations = 10, cat_pred = 0.10, snake_pred = 0.20, snake_intro = 10, k = 312, urban_index = 1, emigration_perc = 0.1) {
+    
+    # Initial population and array
+    n_lizards <- initial_pop
+    lizard_pop <- array(data = NA, dim = c(999999, 4, n_generations))
+    dimnames(lizard_pop)[[2]] <- c("ID", "Age", "Sex", "Status")
+    
+    # First individuals
+    for (i in 1:n_lizards) {
+      lizard_pop[i, 1, 1] <- i # Lizard ID
+      lizard_pop[i, 2, 1] <- pmin(rgeom(1, 0.2), 18) # Age (coming from a geometric distribution)
+      lizard_pop[i, 3, 1] <- sample(c("Male", "Female"), 1) # Sex
+      lizard_pop[i, 4, 1] <- 1 # Dead (0) or alive (1)
+    }
+    
+    # Time simulation
+    for (i in 2:n_generations) {
+      
+      # Keep tracking of number of rows filled
+      last_ind <- sum(complete.cases(lizard_pop[, 1, i - 1]))
+      
+      # Select previous generation
+      lizards_generation <- as.data.frame(lizard_pop[, , i - 1])
+      
+      # Select only alive individuals
+      lizards_alive <- subset(lizards_generation, as.numeric(Status) == 1)
+      
+      # Anthropogenic factors mortality
+      if (nrow(lizards_alive) > 0) {
+        dead_ind_cat <- sample(1:nrow(lizards_alive), trunc(nrow(lizards_alive) * cat_pred), replace = FALSE)
+        dead_ids_cat <- lizards_alive[dead_ind_cat, "ID"]
+        for (id in dead_ids_cat) {
+          idx <- which(lizard_pop[, 1, i - 1] == id)
+          lizard_pop[idx, , i] <- lizard_pop[idx, , i - 1]
+          lizard_pop[idx, 4, i] <- 0
+        }
+      }
+      
+      # Select individuals still alive after anthropogenic mortality
+      lizards_alive_after_cats <- subset(as.data.frame(lizard_pop[, , i - 1]), as.numeric(Status) == 1 & is.na(lizard_pop[, 4, i]))
+      
+      # Snake mortality (starting from snake_intro)
+      # Full urbanization counters snake effect
+      if (i >= (snake_intro + 1)) {
+        if (nrow(lizards_alive_after_cats) > 0) {
+          dead_ind_snake <- sample(1:nrow(lizards_alive_after_cats), trunc(nrow(lizards_alive_after_cats) * (snake_pred - (urban_index * snake_pred))), replace = FALSE)
+          dead_ids_snake <- lizards_alive_after_cats[dead_ind_snake, "ID"]
+          for (id in dead_ids_snake) {
+            idx <- which(lizard_pop[, 1, i - 1] == id)
+            lizard_pop[idx, , i] <- lizard_pop[idx, , i - 1]
+            lizard_pop[idx, 4, i] <- 0
+          }
+        }
+      }
+      
+      # Select individuals still alive after snake mortality
+      lizards_alive_after_snakes <- subset(as.data.frame(lizard_pop[, , i - 1]), as.numeric(Status) == 1 & is.na(lizard_pop[, 4, i]))
+      
+      # Denso dependency
+      n_alive <- nrow(lizards_alive_after_snakes)
+      
+      if (n_alive > k) {
+        surplus <- n_alive - k
+        surplus_ind <- sample(1:nrow(lizards_alive_after_snakes), surplus, replace = FALSE)
+        surplus_ids <- lizards_alive_after_snakes[surplus_ind, "ID"]
+        for (id in surplus_ids) {
+          idx <- which(lizard_pop[, 1, i - 1] == id)
+          lizard_pop[idx, , i] <- lizard_pop[idx, , i - 1]
+          lizard_pop[idx, 4, i] <- 0
+        }
+      }
+      
+      # The rest of individuals
+      for (j in 1:last_ind) {
+        
+        # If there is an NA, jump to next loop
+        if (is.na(lizard_pop[j, 4, i - 1])) {
+          next
+        }
+        
+        # If the individual is already dead in this generation (external death causes), jump to the next loop
+        if (!is.na(lizard_pop[j, 4, i]) && as.numeric(lizard_pop[j, 4, i]) == 0) {
+          next
+        }
+        
+        # If lizard was dead in the previous generation, mark it as dead
+        if (as.numeric(lizard_pop[j, 4, i - 1]) == 0) {
+          lizard_pop[j, , i] <- lizard_pop[j, , i - 1]
+          next
+        }
+        
+        # If the lizard is alive, but it's older than 18 years old, it dies
+        if (as.numeric(lizard_pop[j, 2, i - 1]) == 18) {
+          lizard_pop[j, , i] <- lizard_pop[j, , i - 1]
+          lizard_pop[j, 4, i] <- 0
+          next
+        }
+        
+        # Intrinsic survival probability
+        surv_prob <- runif(1, 0.75, 0.83)
+        surv_random <- runif(1, 0, 1)
+        
+        # If it fails, the lizard is marked as dead
+        if (surv_random > surv_prob) {
+          lizard_pop[j, , i] <- lizard_pop[j, , i - 1]
+          lizard_pop[j, 4, i] <- 0
+          
+        } else {
+          # If the lizard survives, it gets older and survives
+          lizard_pop[j, 1, i] <- lizard_pop[j, 1, i - 1]
+          lizard_pop[j, 2, i] <- as.numeric(lizard_pop[j, 2, i - 1]) + 1
+          lizard_pop[j, 3, i] <- lizard_pop[j, 3, i - 1]
+          lizard_pop[j, 4, i] <- 1
+        }
+        
+        # Reproduction
+        # If the individual is a female, older than 2 years old and alive
+        if (lizard_pop[j, 3, i - 1] == "Female" && as.numeric(lizard_pop[j, 4, i - 1]) == 1 && as.numeric(lizard_pop[j, 2, i - 1]) >= 2) {
+          
+          if (as.numeric(lizard_pop[j, 2, i - 1]) > (18 + 1)) {
+            # If it's an old female, it lays eggs two times (for the moment, only one egg laying per year)
+            
+            for (p in 1:2) {
+              
+              # Number of eggs laid
+              n_eggs <- trunc(abs(rnorm(1, 2.30, 0.55)))
+              
+              if (n_eggs > 0) {
+                
+                for (m in 1:n_eggs) {
+                  
+                  # Hatching probability
+                  hatch_prob <- runif(1, 0.60, 0.75)
+                  hatch_random <- runif(1, 0, 1)
+                  
+                  # If the egg hatches
+                  if (hatch_random < hatch_prob) {
+                    
+                    # Add a new row
+                    last_ind <- last_ind + 1
+                    lizard_pop[last_ind, 1, i] <- last_ind
+                    lizard_pop[last_ind, 2, i] <- 0
+                    lizard_pop[last_ind, 3, i] <- sample(c("Male", "Female"), 1)
+                    lizard_pop[last_ind, 4, i] <- 1
+                  }
+                }
+              }
+            }
+            
+          } else {
+            
+            # If the female is young, only one laying
+            n_eggs <- trunc(abs(rnorm(1, 2.30, 0.55)))
+            
+            if (n_eggs > 0) {
+              
+              for (m in 1:n_eggs) {
+                
+                hatch_prob <- runif(1, 0.60, 0.75)
+                hatch_random <- runif(1, 0, 1)
+                
+                if (hatch_random < hatch_prob) {
+                  
+                  last_ind <- last_ind + 1
+                  lizard_pop[last_ind, 1, i] <- last_ind
+                  lizard_pop[last_ind, 2, i] <- 0
+                  lizard_pop[last_ind, 3, i] <- sample(c("Male", "Female"), 1)
+                  lizard_pop[last_ind, 4, i] <- 1
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      # Emigration
+      emigration <- trunc(k * emigration_perc)
+      
+      for (e in 1:emigration) {
+        last_ind <- last_ind + 1
+        lizard_pop[last_ind, 1, i] <- last_ind
+        lizard_pop[last_ind, 2, i] <- pmin(rgeom(1, 0.2), 18) 
+        lizard_pop[last_ind, 3, i] <- sample(c("Male", "Female"), 1)
+        lizard_pop[last_ind, 4, i] <- 1
+      }
+      
+      # Check for virtual extinction
+      n_alive <- sum(lizard_pop[, 4, i] == 1, na.rm = TRUE)
+      if (n_alive <= (k * 0.1)) { # if population is under 10% of carrying capacity, it becomes virtually extinct
+        extinction_generation <- i
+        for (j in 1:last_ind) {
+          if (lizard_pop[j, 4, i] == 1) {
+            lizard_pop[j, 4, i:n_generations] <- 0
+          }
+        }
+        break
+      }
+      
+      assign("lizard_pop", lizard_pop, envir = globalenv())
+      
+    }
+    
+    # Track nº of individuals per generation
+    n_ind_pop <- as.data.frame(matrix(data = NA, ncol = n_generations, nrow = 1))
+    for (i in 1:n_generations) {
+      n_ind_pop[i] <- sum(lizard_pop[, 4, i] == 1, na.rm = TRUE)
+    }
+    
+    colnames(n_ind_pop) <- paste0("Generation_", 1:n_generations)
+    
+    assign("n_ind_pop", n_ind_pop, envir=globalenv())
+    
+  }
+  
+  
+  # Set layout for the final plot
+  par(mfrow = c(2,6))
+  
+  
+  # Simulation 1
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.05, 
+                   snake_pred = 0.0, 
+                   snake_intro = 70, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0) 
+  
+  # Simulation 2
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61,
+                   cat_pred = 0.075, 
+                   snake_pred = 0.0, 
+                   snake_intro = 70, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0)
+  # Simulation 3
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.1, 
+                   snake_pred = 0.0, 
+                   snake_intro = 70, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0) 
+  # Simulation 4
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61,
+                   cat_pred = 0.125, 
+                   snake_pred = 0.0, 
+                   snake_intro = 70, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0)
+  # Simulation 5
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.15, 
+                   snake_pred = 0.0, 
+                   snake_intro = 70, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0) 
+  # Simulation 6
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.25, 
+                   snake_pred = 0.0, 
+                   snake_intro = 70, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0) 
+  # Simulation 7
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.10, 
+                   snake_pred = 0.25, 
+                   snake_intro = 21, 
+                   k = 300, 
+                   urban_index = 0, 
+                   emigration_perc = 0) 
+  # Simulation 8
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.10, 
+                   snake_pred = 0.25, 
+                   snake_intro = 21, 
+                   k = 300, 
+                   urban_index = 0.25, 
+                   emigration_perc = 0) 
+  # Simulation 9
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.10, 
+                   snake_pred = 0.25, 
+                   snake_intro = 21, 
+                   k = 300, 
+                   urban_index = 0.5, 
+                   emigration_perc = 0) 
+  # Simulation 10
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.10, 
+                   snake_pred = 0.25, 
+                   snake_intro = 21, 
+                   k = 300, 
+                   urban_index = 0.8, 
+                   emigration_perc = 0) 
+  # Simulation 11
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.10, 
+                   snake_pred = 0.25, 
+                   snake_intro = 21, 
+                   k = 300, 
+                   urban_index = 0.9, 
+                   emigration_perc = 0) 
+  
+  # Simulation 12
+  lizard_multiplot(n_rep = 10, 
+                   initial_pop = 300, 
+                   n_generations = 61, 
+                   cat_pred = 0.10, 
+                   snake_pred = 0.25, 
+                   snake_intro = 21, 
+                   k = 300, 
+                   urban_index = 1, 
+                   emigration_perc = 0) 
+  
+}
+
+source_sink_plot()
+```

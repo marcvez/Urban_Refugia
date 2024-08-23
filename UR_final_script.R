@@ -51,7 +51,7 @@ library(ggpubr)
 library(EnvStats)
 library(sf)
 library(viridis)
-
+library(ggpubr)
 
 
 #
@@ -354,7 +354,7 @@ theme_set(theme_classic() + theme(legend.position = 'bottom') + theme(text = ele
 
 ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")), y = Suma_total, fill = Code)) +
   geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
-  labs(x = "", y = "Lizard abundance") +
+  labs(x = "\nInvasion and urbanization status", y = "Lizard abundance") +
   theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5), legend.position = "none") +
   geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.6, dodge.width = 0.75, jitter.height = 0.2)) +  
   stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", fill = "white", stroke = 1, size = 4, position = position_dodge(width = 0.7)) +  
@@ -367,7 +367,7 @@ ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_Peri
 
 ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Code, level=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban")), y = Suma_total, fill = Code)) +
   geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
-  labs(x = "\nInvasion and urbanisation status", y = "Lizard abundance") +
+  labs(x = "\nInvasion and urbanization status", y = "Lizard abundance") +
   theme(legend.position = "none", axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
   geom_jitter(shape = 16, position = position_jitterdodge(jitter.width = 0.6, dodge.width = 0.75, jitter.height = 0.2)) +  
   stat_summary(fun.y = mean, geom = "point", shape = 21, col = "black", fill = "white", stroke = 1, size = 4, position = position_dodge(width = 0.7)) +  
@@ -387,7 +387,6 @@ TukeyHSD(aov(Suma_total ~ Inv_state + Project, data = Urban_Refugia_MVG_seleccio
 
 TukeyHSD(aov(Suma_total ~ Code, data = Urban_Refugia_MVG_seleccio))
 
-
 ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Inv_state, level=c("NonInvaded", "Invaded")), y = Suma_total, fill = Code)) +
   geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +  
   labs(x = "Invasion status", y = "Lizard abundance") +
@@ -397,7 +396,7 @@ ggplot(Urban_Refugia_MVG_seleccio, aes(x = factor(Inv_state, level=c("NonInvaded
   scale_fill_manual(values = c( "grey60", "grey30", "tomato1", "red3"),
                     name = "Treatment", 
                     breaks=c('NonInvaded_PeriUrban', 'NonInvaded_Urban', 'Invaded_PeriUrban', "Invaded_Urban"),
-                    labels = c("Non-invaded | Peri-Urban      ", "Non-invaded | Urban      ", "Invaded | Peri-urban      ", "Invaded | Urban     ")) + 
+                    labels = c("Non-invaded | Peri-Urban      ", "Non-invaded | Urban      ", "Invaded | Peri-urban      ", "Invaded | Urban     ")) +
   scale_x_discrete(labels=c("Non-invaded", "Invaded")) +
   guides(fill=guide_legend(ncol=2)) +
   stat_n_text(y.pos = NULL, color = "black", text.box = FALSE)
@@ -726,6 +725,10 @@ ggplot(data_teóricos, aes(x = x, y = y, color = Dynamic)) +
 # 3D plot
 plot_ly(data = Urban_data, x = ~`3P 250 200`, y = ~Suma_total, z = ~`Index Urb`)
 
+# snake captures
+Traps_snake <- read_delim("Traps_snake.csv", 
+                          delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
 # Proportion of no-snake traps inside city
 Zones <- c(rep("Outer", 18), rep("Intermediate", 8), rep("Inner", 15))
 
@@ -734,8 +737,8 @@ Total <- c(11, 2, 6, 4, 9, 4, 4, 7, 3, 2, 2, 1, 5, 2, 0, 0, 0, 0, 2, 0, 0, 4, 1,
 # Crear el data frame
 Trap_eff_zones <- data.frame(Zones = Zones, Total = Total)
 
-media_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = mean)
-total_por_zona <- aggregate(Total ~ Zones, data = Trap_eff_zones, FUN = length)
+media_por_zona <- aggregate(Total ~ Zones, data = Traps_snake, FUN = mean)
+total_por_zona <- aggregate(Total ~ Zones, data = Traps_snake, FUN = length)
 
 colors <- c("Outer" = "grey80", "Intermediate" = "grey50", "Inner" = "grey20")
 
@@ -760,6 +763,17 @@ ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
+ggplot(Trap_eff_zones, aes(x = Zones, y = Total, fill = Zones)) +
+  geom_violin(trim = TRUE, adjust = 1.5, width = 0.75) +
+  geom_jitter(shape = 16, size = 2, position = position_jitterdodge(jitter.width = 0.5, dodge.width = 0.75, jitter.height = 0.2)) +
+  geom_point(data = media_por_zona, aes(y = Total), color = "black", fill = "white", size = 4, shape = 21) +
+  labs(x = "",
+       y = "Captured snakes per trap") +
+  scale_fill_manual(values = colors) +
+  scale_x_discrete(labels=c("Outer area", "Intermediate area", "Inner area")) +
+  stat_n_text(y.pos = NULL, color = "black", text.box = FALSE) +
+  theme(legend.position = "none",
+        axis.ticks.x = element_blank())
 
 
 summary(aov(Total ~ factor(Zones),data = Trap_eff_zones))
@@ -1977,7 +1991,7 @@ ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=
   geom_point(size=3, shape=21, colour="black", stroke = 0.5, position=position_dodge(width = 0.5)) +
   scale_fill_manual(values=barCOLS, labels = c("Poisson", "Zero-inflated")) +
   scale_color_manual(values=dotCOLS, labels = c("Poisson", "Zero-inflated")) +
-  scale_x_discrete(name="Fixed factors", limits=rev,  labels=c('Year of\ninvasion', 'Urbanisation\n index', 'Intercept')) +
+  scale_x_discrete(name="Fixed factors", limits=rev,  labels=c('Year of\ninvasion', 'Urbanization\n index', 'Intercept')) +
   scale_y_continuous(name="Odds ratio", limits = c(min(data_ZIP3_Year_Urb$Lower), max(data_ZIP3_Year_Urb$Upper))) +
   expand_limits(y=c(0.1, 50)) + 
   guides(color = guide_legend(reverse=TRUE), fill = guide_legend(reverse=TRUE)) +
@@ -1985,6 +1999,26 @@ ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=
   theme(legend.position="bottom") +
   theme(text = element_text(size = 17),
         axis.title.y = element_text(vjust = 2))
+
+ggplot(data_ZIP3_Year_Urb, aes(x = Variable, y = Value, ymin = Lower, ymax = Upper, col = Model, fill = Model)) + 
+  geom_linerange(size = 5, position = position_dodge(width = 0.5)) +
+  geom_hline(yintercept = 0, lty = 2) +
+  geom_point(size = 3, shape = 21, colour = "black", stroke = 0.5, position = position_dodge(width = 0.5)) +
+  scale_fill_manual(values = barCOLS, labels = c("Poisson", "Zero-inflated")) +
+  scale_color_manual(values = dotCOLS, labels = c("Poisson", "Zero-inflated")) +
+  scale_x_discrete(name = "Fixed factors", limits = rev, labels = c('Year of\ninvasion', 'Urbanization\n index', 'Intercept')) +
+  scale_y_continuous(name = "Odds ratio", limits = c(min(data_ZIP3_Year_Urb$Lower), max(data_ZIP3_Year_Urb$Upper))) +
+  expand_limits(y = c(0.1, 50)) + 
+  guides(color = guide_legend(reverse = TRUE), fill = guide_legend(reverse = TRUE)) +
+  coord_flip() +
+  theme(legend.position = "bottom",
+        text = element_text(size = 17),
+        axis.title.y = element_text(vjust = 2),
+        panel.grid.major = element_blank(),  
+        panel.grid.minor = element_blank(),  
+        panel.background = element_blank(),  
+        axis.line = element_line(),
+        axis.ticks = element_line())
 
 
 ## PART 6.3: ZITP plot with state of invasion as variable ####
@@ -2171,7 +2205,27 @@ plot(buff_inv_urban, add = TRUE, lwd = 3)
 
 
 
+# Map IBIZA
+
+library(sf)
+colors2 <- c("#89d2a3", "#a7dca5", "#c5ecac", "#fbdf9d", "#e58087", "#d1d1d1", "#dceef3", "#8dc8d8", "#d4bbfc")
+
+# Plotejem everything togheter
+roads <- read_sf(dsn = "C:/Users/marc9/Desktop/Marc/CREAF/Invasion snake/Final_project", layer = "carreteras_ibiza")
+
+roads$clased <- factor(roads$clased, levels = c("Carretera convencional", "Carretera multicarril", "Urbano"))
+
+roads_subset <- subset(roads, clased %in% c("Carretera convencional", "Carretera multicarril", "Urbano"))
 
 
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xaxt = "n", yaxt = "n")
 
+colores <- c(rep("black", 3))
+
+tamanios <- c(0.5, 0.5, 0.001)
+
+for (i in 1:length(levels(roads_subset$clased))) {
+  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ] 
+  lines(subset_roads, lwd = tamanios[i], col = colores[i]) 
+}
 
