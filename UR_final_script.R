@@ -2160,7 +2160,7 @@ plot(buff_noninv_periurban, add = TRUE, lwd = 2, col = paste0("#06CD00", "40"))
 
 # same as invasion stauts
 
-plot(Eivissa_map, axes = T, col = colors2, legend = F, xlim = c(1.3988, 1.4436), ylim = c(38.901, 38.9257), xaxt = "n", yaxt = "n")
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xaxt = "n", yaxt = "n")
 
 colores <- c(rep("black", 3))
 

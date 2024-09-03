@@ -1,19 +1,22 @@
 ---
-title: "Urban refugia script"
-author: "Marc Vez-Garzón"
-format: html
+title: "Urban refugia enhance persistence of an endemic keystone species facing a rapidly spreading invasive predator"
+author: "Marc Vez-Garzón, Sandra Moreno, Guillem Casbas, Victor Colomar, Oriol Lapiedra"
+format: 
+  html:
+    embed-resources: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
 editor: visual
 ---
 
-# Urban refugia enhance persistence of an endemic keystone species facing a rapidly spreading invasive predator
-
-#### Marc Vez-Garzón, Sandra Moreno, Guillem Casbas, Victor Colomar, Oriol Lapiedra
+# Introduction
 
 This R script collects all the steps followed to achieve the results shown in the article.
 
-## 0. Load required packages
+# Load required packages
 
-```{r}
+```{r packages}
 #| warning: false
 library(raster)
 library(readr)
@@ -31,11 +34,11 @@ library(DHARMa)
 library(pgirmess)
 ```
 
-## 1. Ibiza map
+# Ibiza map
 
-### 1.1. Load map and define sampling points
+## Load map and define sampling points
 
-```{r}
+```{r Ibiza map sampling points}
 #| warning: false
 
 # Map working directory 
@@ -57,11 +60,40 @@ coordinates(coords) <- ~ Longitude + Latitude
 # 50 metres buffer around each sampling point
 buff_shp <- buffer(coords, 50)
 
+# Plot Ibiza map (no roads, but with sampling points)
+colors2 <- c("#89d2a3", "#a7dca5", "#c5ecac", "#fbdf9d", "#e58087", "#d1d1d1", "#dceef3", "#8dc8d8", "#d4bbfc")
+
+buff_shp_plot <- buffer(coords, 200)
+
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xaxt = "n", yaxt = "n")
+
+plot(buff_shp_plot, add = TRUE)
 ```
 
-### 1.2. Calculate urbanization index
+```{r plot Ibiza roads}
+# Plot Ibiza map (with roads)
+# Roads file
+roads <- read_sf(dsn = "C:/Users/marc9/Desktop/Marc/CREAF/Invasion snake/Final_project", layer = "carreteras_ibiza")
 
-```{r}
+roads$clased <- factor(roads$clased, levels = c("Carretera convencional", "Carretera multicarril", "Urbano"))
+
+roads_subset <- subset(roads, clased %in% c("Carretera convencional", "Carretera multicarril", "Urbano"))
+
+colores <- c(rep("black", 3))
+
+tamanios <- c(1, 1, 0.05)
+
+plot(Eivissa_map, axes = T, col = colors2, legend = F, xaxt = "n", yaxt = "n")
+
+for (i in 1:length(levels(roads_subset$clased))) {
+  subset_roads <- roads_subset[roads_subset$clased == levels(roads_subset$clased)[i], ] 
+  lines(subset_roads, lwd = tamanios[i], col = colores[i]) 
+}
+```
+
+## Calculate urbanization index
+
+```{r urbanization index}
 #| warning: false
 
 # Extract use of land information from every 10x10m cell inside the 50m buffer
@@ -122,11 +154,11 @@ landcover_eivissa$Urbanization_index <- landcover_eivissa$Built_up/
 
 ```
 
-## 2. Lizard censuses
+# Lizard censuses
 
-### 2.1. Data set cleaning and exploratory plots
+## Data set cleaning and exploratory plots
 
-```{r}
+```{r data set filtering}
 #| warning: false
 
 # Select desired columns
@@ -208,9 +240,9 @@ urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = `In
 ggarrange(urb_periurb_complete, urb_urb_complete,  ncol = 2, nrow = 1)
 ```
 
-### 2.2. One-way ANOVA + Tukey's HSD test on lizard abundance
+## One-way ANOVA + Tukey's HSD test on lizard abundance
 
-```{r}
+```{r ANOVA + Tukey lizard abundance}
 #| warning: false
 
 # One-way ANOVA test
@@ -221,11 +253,11 @@ TukeyHSD(aov(Suma_total ~ Code, data = Urban_Refugia_MVG_seleccio))
 
 ```
 
-## 3. Zero-inflated Poisson GLMM
+# Zero-inflated Poisson GLMM
 
-### 3.1. Data preparation
+## Data preparation
 
-```{r}
+```{r ZIP preparation}
 #| warning: false
 
 # Percentage of 0 in our data
@@ -256,9 +288,9 @@ check_overdispersion(P5)
 check_zeroinflation(P5, tolerance = 0.05)
 ```
 
-### 3.2. Zero-inflated Poisson
+## Zero-inflated Poisson
 
-```{r}
+```{r ZIP}
 #| warning: false
 
 # Zero-inflated Poisson
@@ -312,9 +344,9 @@ ggplot(data_ZIP3_Year_Urb, aes(x=Variable, y=Value, ymin=Lower, ymax=Upper, col=
         axis.title.y = element_text(vjust = 2))
 ```
 
-### 3.3. Zero-inflated + Poisson part ANOVAs
+## Zero-inflated + Poisson part ANOVAs
 
-```{r}
+```{r ZIP ANOVA}
 #| warning: false
 
 # Zero-inflated part's ANOVA
@@ -330,9 +362,9 @@ glmmTMB:::Anova.glmmTMB(ZIP3_Year_Urb,
                         component = "cond")
 ```
 
-## 4. Spatial autocorrelation
+# Spatial autocorrelation
 
-```{r}
+```{r spatial autocorrelation}
 #| warning: false
 
 # Extract residuals
@@ -372,11 +404,11 @@ testSpatialAutocorrelation(res_ZIP3$residuals_P3_1,
                            distMat = dist_matrix)
 ```
 
-## 5. Urban filtering
+# Urban filtering
 
-### 5.1. Load data and exploratory plots
+## Load data and exploratory plots
 
-```{r}
+```{r urban filter data + plots}
 #| warning: false
 
 # Load snake captures
@@ -420,9 +452,9 @@ aggregate(. ~ Zones, Traps_snake, function(x) c(mean = mean(x), sd = sd(x)))
 
 ```
 
-### 5.2. One-way ANOVA + Tukey's HSD test on snake captures
+## One-way ANOVA + Tukey's HSD test on snake captures
 
-```{r}
+```{r ANOVA + Tukey urban filter}
 #| warning: false
 
 summary(aov(Total ~ factor(Zones),data = Traps_snake))
@@ -430,11 +462,11 @@ summary(aov(Total ~ factor(Zones),data = Traps_snake))
 TukeyHSD(aov(Total ~ factor(Zones),data = Traps_snake))
 ```
 
-## 6. Source-sink dynamic model
+# Source-sink dynamic model
 
-```{r}
+```{r source-sink dynamic}
 #| warning: false
-#| eval: false
+# eval: false --> if we don't want to execute this block
 
 source_sink_plot <- function(){
   
