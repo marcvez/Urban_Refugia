@@ -1,0 +1,313 @@
+Date;Censed by;Project;Place;Site_ID;State;Initial_Ho;Transect_T;Latitude;Longitude;Males;Females;NA;Juveniles;Veg_Male;Veg_Female;Veg_Juv;Veg_NA;Tarentola;Snake;Total Male;Total Fema;Total Juve;Total NA;Comments;Weather_Co;Population;Polygon ar;Index Urb;Year_inv;Distance;Inv_state;Classifica
+21/07/2022;Jordi;Urban;Sant_Llorenc;Church_Park;Snake;11:23;Point Count;39,03135764;1,477033667;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,4875;2014,14636;2909,883216;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Sant_Llorenc;Church_Park;Snake;10:41;Point Count;39,03135764;1,477033667;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,4875;2014,14636;2909,883216;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Llorenc;Park_2;Snake;11:37;Point Count;39,03066604;1,475913872;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,2375;2014,90417;2671,7074;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Sant_Llorenc;Park_2;Snake;10:32;Point Count;39,03066604;1,475913872;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,2375;2014,90417;2671,7074;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Sant_Llorenc;Wall;Snake;10:44;Point Count;39,03102547;1,476716011;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,5125;2014,90417;2671,7074;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Llorenc;Wall;Snake;11:33;Point Count;39,03102547;1,476716011;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,5125;2014,90417;2671,7074;Invaded;Invaded_Urban
+21/06/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_1;Snake;9:38;Point Count;38,98973092;1,515017919;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;40038;6880045;0;2013,90796;3104,823397;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_1;Snake;11:36;Point Count;38,98973092;1,515017919;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;6880045;0;2013,90796;3104,823397;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_4;Snake;12:34;Point Count;39,00562732;1,553414298;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;6880045;0;2017,83655;5656,614096;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_4;Snake;11:33;Point Count;39,00562732;1,553414298;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;6880045;0;2017,83655;5656,614096;Invaded;Invaded_PeriUrban
+20/06/2022;Jordi;Urban;Santa_Eularia;Park;Snake;11:50;Point Count;38,98423532;1,535245559;0;0;0;0;1;1;0;0;0;0;1;1;0;0;;Sunny;40038;202689;0,9166667;2013,06226;4929,630248;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Santa_Eularia;Park;Snake;10:46;Point Count;38,98423532;1,535245559;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;40038;202689;0,9166667;2013,06226;4929,630248;Invaded;Invaded_Urban
+29/06/2022;Balma;Urban;Santa_Eularia;Park;Snake;12:17;Point Count;38,98423532;1,535245559;0;0;0;0;0;0;0;2;0;0;0;0;0;2;;Sunny;40038;202689;0,9166667;2013,06226;4929,630248;Invaded;Invaded_Urban
+20/06/2022;Jordi;Urban;Santa_Eularia;Park_2;Snake;12:03;Point Count;38,98544662;1,542142609;0;0;0;0;1;0;0;1;0;0;1;0;0;1;;Clowdy;40038;202689;1;2015,13525;5266,188895;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Santa_Eularia;Park_2;Snake;10:32;Point Count;38,98544662;1,542142609;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;40038;202689;1;2015,13525;5266,188895;Invaded;Invaded_Urban
+29/06/2022;Balma;Urban;Santa_Eularia;Park_2;Snake;9:54;Point Count;38,98544662;1,542142609;0;0;0;0;2;0;0;3;0;0;2;0;0;3;;Sunny;40038;202689;1;2015,13525;5266,188895;Invaded;Invaded_Urban
+12/06/2022;Sanda, Balma;Urban;Santa_Gertrudis;Park_2;Snake;16:33;Point Count;38,99811586;1,426333707;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;2853;10215;0,9;2015,14661;5436,399688;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Santa_Gertrudis;Park_2;Snake;9:01;Point Count;38,99811586;1,426333707;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;10215;0,9;2015,14661;5436,399688;Invaded;Invaded_Urban
+21/07/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_1;Snake;9:45;Point Count;39,03889483;1,560204178;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2016,27051;7195,438474;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_3;Snake;10:55;Point Count;39,03742823;1,566763734;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2015,97754;7643,846914;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_3;Snake;12:09;Point Count;39,03742823;1,566763734;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2015,97754;7643,846914;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_3;Snake;9:58;Point Count;39,03742823;1,566763734;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2015,97754;7643,846914;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_4;Snake;11:52;Point Count;39,02776298;1,570291271;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2019,18567;7436,117294;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_4;Snake;10:16;Point Count;39,02776298;1,570291271;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2019,18567;7436,117294;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;Urban;Sant_Carles;Church_Park;Snake;11:10;Point Count;39,03419991;1,56537098;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,6;2015,92139;7442,740128;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Carles;Church_Park;Snake;9:23;Point Count;39,03419991;1,56537098;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,6;2015,92139;7442,740128;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Carles;Wall_2;Snake;9:08;Point Count;39,03288657;1,56519732;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,2125;2015,92139;7442,740128;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Sant_Carles;Wall_2;Snake;11:15;Point Count;39,03288657;1,56519732;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,2125;2015,92139;7442,740128;Invaded;Invaded_Urban
+21/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_1;Snake;11:43;Point Count;39,02750166;1,478700381;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2014,97778;2360,444483;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_1;Snake;10:28;Point Count;39,02750166;1,478700381;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2014,97778;2360,444483;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_2;Snake;11:50;Point Count;39,03477447;1,470323063;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2016,98608;3319,779687;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_2;Snake;11:02;Point Count;39,03477447;1,470323063;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2016,98608;3319,779687;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_3;Snake;11:08;Point Count;39,03413333;1,484760012;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2015,67932;3034,98085;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_3;Snake;10:45;Point Count;39,03413333;1,484760012;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2015,67932;3034,98085;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_4;Snake;11:16;Point Count;39,03212704;1,479132767;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2014,76514;2847,007756;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;PeriUrban;Sant_Llorenc;Mur_Ext_4;Snake;10:36;Point Count;39,03212704;1,479132767;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;323448;0;2014,76514;2847,007756;Invaded;Invaded_PeriUrban
+21/06/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_2;Snake;11:10;Point Count;38,96606308;1,512028355;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;40038;6880045;0;2019,56018;5185,60182;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_2;Snake;12:55;Point Count;38,96606308;1,512028355;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;6880045;0;2019,56018;5185,60182;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_3;Snake;12:43;Point Count;39,00203816;1,56437231;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;6880045;0;2018,84265;6691,2119;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;PeriUrban;Santa_Eularia;Mur_Ext_3;Snake;11:45;Point Count;39,00203816;1,56437231;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;6880045;0;2018,84265;6691,2119;Invaded;Invaded_PeriUrban
+20/06/2022;Jordi;Urban;Santa_Eularia;Church_Wall;Snake;11:35;Point Count;38,98379345;1,529502913;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Clowdy;40038;202689;0,9;2013,04614;4552,294126;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Santa_Eularia;Church_Wall;Snake;10:09;Point Count;38,98379345;1,529502913;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;40038;202689;0,9;2013,04614;4552,294126;Invaded;Invaded_Urban
+29/06/2022;Balma;Urban;Santa_Eularia;Church_Wall;Snake;9:25;Point Count;38,98379345;1,529502913;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;202689;0,9;2013,04614;4552,294126;Invaded;Invaded_Urban
+20/06/2022;Jordi;Urban;Santa_Eularia;Wall_2;Snake;12:16;Point Count;38,97916177;1,527941339;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;202689;0,6333333;2013,8064;4682,720078;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Santa_Eularia;Wall_2;Snake;9:50;Point Count;38,97916177;1,527941339;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;40038;202689;0,6333333;2013,8064;4682,720078;Invaded;Invaded_Urban
+29/06/2022;Balma;Urban;Santa_Eularia;Wall_2;Snake;9:07;Point Count;38,97916177;1,527941339;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;40038;202689;0,6333333;2013,8064;4682,720078;Invaded;Invaded_Urban
+12/06/2022;Sanda, Balma;PeriUrban;Santa_Gertrudis;Mur_Ext_1;Snake;17:05;Point Count;38,99821481;1,433661567;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2014,66443;4700,137904;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Gertrudis;Mur_Ext_1;Snake;9:23;Point Count;38,99821481;1,433661567;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2014,66443;4700,137904;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Gertrudis;Mur_Ext_2;Snake;8:44;Point Count;38,99966116;1,418373947;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2017,55481;5893,541037;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Santa_Gertrudis;Mur_Ext_2;Snake;12:17;Point Count;38,99966116;1,418373947;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2017,55481;5893,541037;Invaded;Invaded_PeriUrban
+12/06/2022;Sanda, Balma;PeriUrban;Santa_Gertrudis;Mur_Ext_3;Snake;16:52;Point Count;38,9941304;1,429406014;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2015,95105;5306,535678;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Gertrudis;Mur_Ext_3;Snake;9:15;Point Count;38,9941304;1,429406014;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2015,95105;5306,535678;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Santa_Gertrudis;Mur_Ext_4;Snake;8:29;Point Count;39,00491372;1,427161564;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2014,77307;5104,220875;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Santa_Gertrudis;Mur_Ext_4;Snake;12:08;Point Count;39,00491372;1,427161564;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;779829;0;2014,77307;5104,220875;Invaded;Invaded_PeriUrban
+12/06/2022;Sanda, Balma;Urban;Santa_Gertrudis;Church_Wall;Snake;16:11;Point Count;38,99830741;1,428881052;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;10215;1;2014,4812;5190,538077;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Santa_Gertrudis;Church_Wall;Snake;8:57;Point Count;38,99830741;1,428881052;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;10215;1;2014,4812;5190,538077;Invaded;Invaded_Urban
+12/06/2022;Sanda, Balma;Urban;Santa_Gertrudis;Park;Snake;16:27;Point Count;38,99892255;1,427183598;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny_Clowdy;2853;10215;1;2014,4812;5190,538077;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Santa_Gertrudis;Park;Snake;8:55;Point Count;38,99892255;1,427183598;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2853;10215;1;2014,4812;5190,538077;Invaded;Invaded_Urban
+12/06/2022;Sanda, Balma;Urban;Santa_Gertrudis;Wall_2;Snake;16:18;Point Count;38,99826353;1,429585894;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny_Clowdy;2853;10215;0,9875;2014,4812;5190,538077;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Santa_Gertrudis;Wall_2;Snake;8:57;Point Count;38,99826353;1,429585894;0;0;0;0;0;0;1;0;0;0;0;0;1;0;;Sunny;2853;10215;0,9875;2014,4812;5190,538077;Invaded;Invaded_Urban
+16/06/2022;Jordi;PeriUrban;Puig_den_Valls;Mur_Ext_3;Snake;10:01;Point Count;38,94977765;1,44076994;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;547986;0;2018,61267;7448,010926;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_2;Snake;12:20;Point Count;39,03324093;1,556883623;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2016,56921;6752,842264;Invaded;Invaded_PeriUrban
+21/07/2022;Jordi;PeriUrban;Sant_Carles;Mur_Ext_2;Snake;9:33;Point Count;39,03324093;1,556883623;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;732585;0;2016,56921;6752,842264;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;Urban;Sant_Carles;Park;Snake;11:19;Point Count;39,03319469;1,565437764;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,25;2015,92139;7442,740128;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Carles;Park;Snake;9:12;Point Count;39,03319469;1,565437764;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,25;2015,92139;7442,740128;Invaded;Invaded_Urban
+30/06/2022;Jordi;Urban;Sant_Carles;Wall;Snake;11:06;Point Count;39,03412398;1,566043038;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,2375;2015,92139;7442,740128;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Carles;Wall;Snake;9:18;Point Count;39,03412398;1,566043038;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;5557;4527;0,2375;2015,92139;7442,740128;Invaded;Invaded_Urban
+09/06/2022;Sandra, Jordi;PeriUrban;Sant_Joan;Mur_Ext_1;Snake;11:03;Point Count;39,07770067;1,508077973;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;531858;0;2017,85535;8013,219641;Invaded;Invaded_PeriUrban
+01/05/2022;Guillem,Eva;PeriUrban;Sant_Joan;Mur_Ext_1;Snake;12:04;Point Count;39,07770067;1,508077973;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;531858;0;2017,85535;8013,219641;Invaded;Invaded_PeriUrban
+09/06/2022;Sandra, Jordi;PeriUrban;Sant_Joan;Mur_Ext_4;Snake;11:13;Point Count;39,07068469;1,514012774;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Cloudy;6635;531858;0;2018,50244;7432,897013;Invaded;Invaded_PeriUrban
+01/05/2022;Guillem,Eva;PeriUrban;Sant_Joan;Mur_Ext_4;Snake;12:04;Point Count;39,07068469;1,514012774;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;531858;0;2018,50244;7432,897013;Invaded;Invaded_PeriUrban
+30/06/2022;Jordi;Urban;Sant_Llorenc;Wall_2;Snake;10:37;Point Count;39,03153081;1,476312165;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,425;2014,14636;2909,883216;Invaded;Invaded_Urban
+21/07/2022;Jordi;Urban;Sant_Llorenc;Wall_2;Snake;11:28;Point Count;39,03153081;1,476312165;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1762;4138;0,425;2014,14636;2909,883216;Invaded;Invaded_Urban
+13/07/2022;Jordi;PeriUrban;Sant_Mateu;Mur_Ext_1;Snake;10:04;Point Count;39,03406787;1,382223242;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2017,68542;9592,484936;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra, Jordi;PeriUrban;Sant_Mateu;Mur_Ext_1;Snake;11:22;Point Count;39,03406787;1,382223242;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Wasp nests in the wall;Sunny;593;1116882;0;2017,68542;9592,484936;Invaded;Invaded_PeriUrban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Sant_Miquel;Mur_Ext_2;Snake;17:18;Point Count;39,06152043;1,43794717;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2019,47424;7294,740422;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Sant_Miquel;Mur_Ext_2;Snake;12:34;Point Count;39,06152043;1,43794717;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2019,47424;7294,740422;Invaded;Invaded_PeriUrban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Sant_Miquel;Mur_Ext_3;Snake;18:35;Point Count;39,05267088;1,431414473;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2016,85474;6989,738041;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Sant_Miquel;Mur_Ext_3;Snake;12:19;Point Count;39,05267088;1,431414473;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2016,85474;6989,738041;Invaded;Invaded_PeriUrban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Sant_Miquel;Mur_Ext_4;Snake;18:09;Point Count;39,04901555;1,44473439;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2019,69165;5986,550499;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Sant_Miquel;Mur_Ext_4;Snake;11:27;Point Count;39,04901555;1,44473439;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2019,69165;5986,550499;Invaded;Invaded_PeriUrban
+08/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_2;Snake;10:48;Point Count;38,96204484;1,413395998;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;1604857;0;2020,93091;8062,375802;Invaded;Invaded_PeriUrban
+13/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_2;Snake;8:38;Point Count;38,96204484;1,413395998;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;1604857;0;2020,93091;8062,375802;Invaded;Invaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_1;Snake;10:38;Point Count;38,92193732;1,418087606;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0,3;2020,17224;11263,52491;Invaded;Invaded_PeriUrban
+06/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_1;Snake;9:10;Point Count;38,92193732;1,418087606;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0,3;2020,17224;11263,52491;Invaded;Invaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_2;Snake;10:53;Point Count;38,91899594;1,413941815;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0;2020,85315;11748,00076;Invaded;Invaded_PeriUrban
+06/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_2;Snake;9:17;Point Count;38,91899594;1,413941815;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0;2020,85315;11748,00076;Invaded;Invaded_PeriUrban
+20/06/2022;Jordi;Urban;Eivissa;Church_Wall;Snake;10:56;Point Count;38,90727902;1,43602249;0;0;4;0;0;0;0;0;0;0;0;0;0;4;;Sunny;50643;223821;1;2022,13318;11894,47257;Invaded;Invaded_Urban
+06/07/2022;Jordi;Urban;Eivissa;Church_Wall;Snake;10:36;Point Count;38,90727902;1,43602249;1;0;1;0;0;0;0;0;0;0;1;0;0;1;;Sunny;50643;223821;1;2022,13318;11894,47257;Invaded;Invaded_Urban
+20/06/2022;Jordi;Urban;Eivissa;Park_2;Snake;11:07;Point Count;38,90785332;1,437590071;0;0;0;0;9;2;1;0;0;0;9;2;1;0;;Sunny;50643;223821;1;2022,42114;11790,98435;Invaded;Invaded_Urban
+06/07/2022;Jordi;Urban;Eivissa;Park_2;Snake;10:45;Point Count;38,90785332;1,437590071;0;0;0;0;7;4;3;0;0;0;7;4;3;0;;Sunny;50643;223821;1;2022,42114;11790,98435;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Port_Sant_Miquel;Mur_Ext_1;Snake;17:00;Point Count;39,06826212;1,441836689;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;266914;0;2020,31995;7800,059735;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Port_Sant_Miquel;Mur_Ext_1;Snake;13:00;Point Count;39,06826212;1,441836689;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;266914;0;2020,31995;7800,059735;Invaded;Invaded_PeriUrban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Port_Sant_Miquel;Mur_Ext_2;Snake;16:15;Point Count;39,07447137;1,434671875;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;266914;0;2018,09033;8699,517417;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Port_Sant_Miquel;Mur_Ext_2;Snake;13:30;Point Count;39,07447137;1,434671875;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;266914;0;2018,09033;8699,517417;Invaded;Invaded_PeriUrban
+16/06/2022;Jordi;PeriUrban;Puig_den_Valls;Mur_Ext_2;Snake;10:13;Point Count;38,94038969;1,442587457;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;547986;0;2019,07422;8519,65877;Invaded;Invaded_PeriUrban
+16/06/2022;Jordi;Urban;Puig_den_Valls;Church_Wall;Snake;9:32;Point Count;38,92720734;1,433371335;0;0;0;0;0;0;0;0;2;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Puig_den_Valls;Church_Wall;Snake;12:05;Point Count;38,92720734;1,433371335;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Puig_den_Valls;Church_Wall;Snake;9:50;Point Count;38,92720734;1,433371335;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+16/06/2022;Jordi;Urban;Puig_den_Valls;Park;Snake;9:24;Point Count;38,92889716;1,432041847;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Puig_den_Valls;Park;Snake;11:57;Point Count;38,92889716;1,432041847;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Puig_den_Valls;Park;Snake;9:52;Point Count;38,92889716;1,432041847;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+16/06/2022;Jordi;Urban;Puig_den_Valls;Park_2;Snake;9:18;Point Count;38,92911535;1,432682744;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Puig_den_Valls;Park_2;Snake;11:50;Point Count;38,92911535;1,432682744;0;0;0;0;0;1;0;0;0;0;0;1;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Puig_den_Valls;Park_2;Snake;9:57;Point Count;38,92911535;1,432682744;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;1;2017,87988;9976,730607;Invaded;Invaded_Urban
+16/06/2022;Jordi;Urban;Puig_den_Valls;Wall_2;Snake;9:10;Point Count;38,92879889;1,433410768;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;0,8833333;2017,87988;9976,730607;Invaded;Invaded_Urban
+21/06/2022;Jordi;Urban;Puig_den_Valls;Wall_2;Snake;11:43;Point Count;38,92879889;1,433410768;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;0,8833333;2017,87988;9976,730607;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Puig_den_Valls;Wall_2;Snake;9:57;Point Count;38,92879889;1,433410768;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;12406;0,8833333;2017,87988;9976,730607;Invaded;Invaded_Urban
+09/06/2022;Sandra, Jordi;PeriUrban;Sant_Joan;Mur_Ext_2;Snake;10:53;Point Count;39,08090357;1,518233384;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;531858;0;2018,83081;8542,355061;Invaded;Invaded_PeriUrban
+01/05/2022;Guillem,Eva;PeriUrban;Sant_Joan;Mur_Ext_2;Snake;12:04;Point Count;39,08090357;1,518233384;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;531858;0;2018,83081;8542,355061;Invaded;Invaded_PeriUrban
+09/06/2022;Sandra, Jordi;PeriUrban;Sant_Joan;Mur_Ext_3;Snake;10:42;Point Count;39,08164035;1,514298435;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Wasp nests in the wall;Sunny;6635;531858;0;2018,14368;8625,534297;Invaded;Invaded_PeriUrban
+01/05/2022;Guillem,Eva;PeriUrban;Sant_Joan;Mur_Ext_3;Snake;12:04;Point Count;39,08164035;1,514298435;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;531858;0;2018,14368;8625,534297;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra, Jordi;Urban;Sant_Mateu;Wall_2;Snake;11:12;Point Count;39,03906189;1,383369232;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,975;2019,94275;9625,01585;Invaded;Invaded_Urban
+13/07/2022;Jordi;Urban;Sant_Mateu;Wall_2;Snake;10:45;Point Count;39,03906189;1,383369232;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,975;2019,94275;9625,01585;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Sant_Miquel;Mur_Ext_1;Snake;18:01;Point Count;39,05682619;1,448083728;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2021,24475;6468,452934;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Sant_Miquel;Mur_Ext_1;Snake;11:18;Point Count;39,05682619;1,448083728;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;1146246;0;2021,24475;6468,452934;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;Urban;Sant_Miquel;Park_2;Snake;11:58;Point Count;39,05456995;1,436813553;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,9875;2015,0603;6843,68398;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Sant_Miquel;Park_2;Snake;17:53;Point Count;39,05456995;1,436813553;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,9875;2015,0603;6843,68398;Invaded;Invaded_Urban
+08/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_3;Snake;10:18;Point Count;38,96307768;1,381875535;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;1604857;0;2020,21667;10250,57771;Invaded;Invaded_PeriUrban
+13/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_3;Snake;9:15;Point Count;38,96307768;1,381875535;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;2505;1604857;0;2020,21667;10250,57771;Invaded;Invaded_PeriUrban
+08/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_4;Snake;10:34;Point Count;38,957612;1,389427218;0;2;1;0;0;0;0;0;0;0;0;2;0;1;;Sunny;2505;1604857;0;2021,20874;10191,35496;Invaded;Invaded_PeriUrban
+13/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_4;Snake;9:22;Point Count;38,957612;1,389427218;3;2;0;0;0;0;0;0;0;0;3;2;0;0;;Sunny;2505;1604857;0;2021,20874;10191,35496;Invaded;Invaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_3;Snake;11:05;Point Count;38,9157804;1,412039249;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0;2021,20081;11955,68363;Invaded;Invaded_PeriUrban
+06/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_3;Snake;9:26;Point Count;38,9157804;1,412039249;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0;2021,20081;11955,68363;Invaded;Invaded_PeriUrban
+20/06/2022;Jordi;Urban;Eivissa;Park;Snake;11:40;Point Count;38,90899818;1,425231758;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;223821;0,2125;2018,1626;12093,63383;Invaded;Invaded_Urban
+06/07/2022;Jordi;Urban;Eivissa;Park;Snake;10:02;Point Count;38,90899818;1,425231758;0;0;0;0;2;1;0;0;2;0;2;1;0;0;;Sunny;50643;223821;0,2125;2018,1626;12093,63383;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Port_Sant_Miquel;Mur_Ext_4;Snake;16:48;Point Count;39,07285778;1,442447465;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;266914;0;2019,98254;8238,70756;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Port_Sant_Miquel;Mur_Ext_4;Snake;13:14;Point Count;39,07285778;1,442447465;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;266914;0;2019,98254;8238,70756;Invaded;Invaded_PeriUrban
+22/07/2022;Jordi;Urban;Port_Sant_Miquel;Wall_2;Snake;9:36;Point Count;39,08053969;1,441250278;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;13794;0,4125;2017,84033;9108,493025;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Port_Sant_Miquel;Wall_2;Snake;16:07;Point Count;39,08053969;1,441250278;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;13794;0,4125;2017,84033;9108,493025;Invaded;Invaded_Urban
+22/07/2022;Jordi;Urban;Port_Sant_Miquel;Park_2;Snake;9:14;Point Count;39,07665044;1,441225851;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;13794;0,5625;2020,11584;8683,99995;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Port_Sant_Miquel;Park_2;Snake;16:03;Point Count;39,07665044;1,441225851;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;13794;0,5625;2020,11584;8683,99995;Invaded;Invaded_Urban
+16/06/2022;Jordi;PeriUrban;Puig_den_Valls;Mur_Ext_1;Snake;9:42;Point Count;38,93609931;1,434753389;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;4607;547986;0;2018,84521;8985,109482;Invaded;Invaded_PeriUrban
+16/06/2022;Jordi;PeriUrban;Puig_den_Valls;Mur_Ext_4;Snake;10:23;Point Count;38,92761774;1,426462547;1;0;1;0;0;0;0;0;0;0;1;0;0;1;;Sunny;4607;547986;0;2020,19043;10229,14955;Invaded;Invaded_PeriUrban
+13/07/2022;Jordi;PeriUrban;Sant_Mateu;Mur_Ext_4;Snake;9:52;Point Count;39,03715116;1,374338574;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2018,24695;10229,92958;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra, Jordi;PeriUrban;Sant_Mateu;Mur_Ext_4;Snake;11:34;Point Count;39,03715116;1,374338574;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2018,24695;10229,92958;Invaded;Invaded_PeriUrban
+13/07/2022;Jordi;Urban;Sant_Mateu;Park;Snake;10:27;Point Count;39,03943774;1,382957445;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,85;2019,94275;9625,01585;Invaded;Invaded_Urban
+08/06/2022;Sandra, Jordi;Urban;Sant_Mateu;Park;Snake;10:59;Point Count;39,03943774;1,382957445;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,85;2019,94275;9625,01585;Invaded;Invaded_Urban
+13/07/2022;Jordi;Urban;Sant_Mateu;Park_2;Snake;10:32;Point Count;39,03931398;1,383215374;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,8625;2019,94275;9625,01585;Invaded;Invaded_Urban
+08/06/2022;Sandra, Jordi;Urban;Sant_Mateu;Park_2;Snake;11:02;Point Count;39,03931398;1,383215374;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,8625;2019,94275;9625,01585;Invaded;Invaded_Urban
+08/06/2022;Sandra, Jordi;Urban;Sant_Mateu;Wall;Snake;11:07;Point Count;39,03931259;1,38355106;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,775;2019,94275;9625,01585;Invaded;Invaded_Urban
+13/07/2022;Jordi;Urban;Sant_Mateu;Wall;Snake;10:39;Point Count;39,03931259;1,38355106;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;643;0,775;2019,94275;9625,01585;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Sant_Miquel;Church_Park;Snake;11:50;Point Count;39,05696755;1,438471298;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;2191;11133;0,8;2018,89941;6886,822807;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Sant_Miquel;Church_Park;Snake;17:35;Point Count;39,05696755;1,438471298;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,8;2018,89941;6886,822807;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Sant_Miquel;Wall;Snake;17:35;Point Count;39,05609559;1,438732427;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,9625;2018,89941;6886,822807;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Sant_Miquel;Wall;Snake;11:38;Point Count;39,05609559;1,438732427;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,9625;2018,89941;6886,822807;Invaded;Invaded_Urban
+01/07/2022;Balma;Urban;Sant_Miquel;Wall_2;Snake;11:44;Point Count;39,05675274;1,438831251;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,7;2018,89941;6886,822807;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Sant_Miquel;Wall_2;Snake;17:45;Point Count;39,05675274;1,438831251;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2191;11133;0,7;2018,89941;6886,822807;Invaded;Invaded_Urban
+08/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_1;Snake;9:57;Point Count;38,96791326;1,396934928;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;1604857;0;2019,89807;8911,47454;Invaded;Invaded_PeriUrban
+13/07/2022;Jordi;PeriUrban;Sant_Rafael;Mur_Ext_1;Snake;9:35;Point Count;38,96791326;1,396934928;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;1604857;0;2019,89807;8911,47454;Invaded;Invaded_PeriUrban
+08/07/2022;Jordi;Urban;Sant_Rafael;Church_Wall;Snake;9:28;Point Count;38,9603381;1,401658067;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;12811;0,4625;2020,0835;9079,755942;Invaded;Invaded_Urban
+25/06/2022;Balma;Urban;Sant_Rafael;Church_Wall;Snake;10:56;Point Count;38,9603381;1,401658067;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;2505;12811;0,4625;2020,0835;9079,755942;Invaded;Invaded_Urban
+08/07/2022;Jordi;Urban;Sant_Rafael;Park_2;Snake;9:15;Point Count;38,96101817;1,401919571;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;12811;0,5375;2020,34778;8871,520646;Invaded;Invaded_Urban
+25/06/2022;Balma;Urban;Sant_Rafael;Park_2;Snake;10:36;Point Count;38,96101817;1,401919571;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;12811;0,5375;2020,34778;8871,520646;Invaded;Invaded_Urban
+18/06/2022;Balma;PeriUrban;Ses_Paises;Mur_Ext_1;Snake;12:17;Point Count;38,9700556;1,344876867;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1508;1518407;0,1375;2023,26367;12972,47232;NonInvaded;NonInvaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Ses_Paises;Mur_Ext_1;Snake;10:05;Point Count;38,9700556;1,344876867;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1508;1518407;0,1375;2023,26367;12972,47232;NonInvaded;NonInvaded_PeriUrban
+18/06/2022;Balma;PeriUrban;Ses_Paises;Mur_Ext_4;Snake;11:12;Point Count;38,97761681;1,337903317;0;0;0;0;0;0;0;0;0;2;0;0;0;0;2 snake shreds;Sunny;1508;1518407;0;2019,7887;13432,7876;Invaded;Invaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Ses_Paises;Mur_Ext_4;Snake;9:22;Point Count;38,97761681;1,337903317;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1508;1518407;0;2019,7887;13432,7876;Invaded;Invaded_PeriUrban
+18/06/2022;Balma;Urban;Ses_Paises;Church_Park;Snake;12:47;Point Count;38,97173758;1,332030611;2;0;0;0;0;0;0;0;0;0;2;0;0;0;;Sunny;1508;19632;1;2023,26575;14099,91275;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Ses_Paises;Church_Park;Snake;10:20;Point Count;38,97173758;1,332030611;0;0;1;0;0;0;0;0;0;0;0;0;0;1;;Sunny;1508;19632;1;2023,26575;14099,91275;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Ses_Paises;Park;Snake;11:24;Point Count;38,97526994;1,32281804;1;0;2;0;0;0;0;0;0;0;1;0;0;2;;Sunny;1508;19632;1;2023,44592;14707,34871;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Ses_Paises;Park;Snake;10:32;Point Count;38,97526994;1,32281804;0;0;1;0;0;0;0;0;0;0;0;0;0;1;;Sunny;1508;19632;1;2023,44592;14707,34871;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Ses_Paises;Park_2;Snake;10:16;Point Count;38,97158032;1,331597536;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;1508;19632;1;2023,26575;14099,91275;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Ses_Paises;Park_2;Snake;11:40;Point Count;38,97158032;1,331597536;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1508;19632;1;2023,26575;14099,91275;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Ses_Paises;Wall;Snake;12:33;Point Count;38,97144436;1,3316068;1;0;0;0;1;1;0;0;0;0;2;1;0;0;;Sunny;1508;19632;1;2023,26575;14099,91275;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Ses_Paises;Wall;Snake;10:12;Point Count;38,97144436;1,3316068;0;2;1;0;0;0;0;0;0;0;0;2;0;1;;Sunny;1508;19632;1;2023,26575;14099,91275;NonInvaded;NonInvaded_Urban
+05/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_4;Snake;9:55;Point Count;38,91053021;1,418745514;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0,375;2019,63306;12333,14653;Invaded;Invaded_PeriUrban
+06/07/2022;Jordi;PeriUrban;Eivissa;Mur_Ext_4;Snake;9:45;Point Count;38,91053021;1,418745514;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;50643;391894;0,375;2019,63306;12333,14653;Invaded;Invaded_PeriUrban
+19/06/2022;Balma;PeriUrban;Sant_Jordi;Mur_Ext_1;Snake;11:48;Point Count;38,91233947;1,375603893;0;0;0;0;0;0;0;1;0;0;0;0;0;1;;Sunny;10729;685618;0;2022,41882;14374,62559;NonInvaded;NonInvaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Sant_Jordi;Mur_Ext_1;Snake;8:56;Point Count;38,91233947;1,375603893;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;10729;685618;0;2022,41882;14374,62559;NonInvaded;NonInvaded_PeriUrban
+19/06/2022;Balma;PeriUrban;Sant_Jordi;Mur_Ext_2;Snake;11:26;Point Count;38,90615841;1,378317207;0;0;1;0;0;0;0;0;0;0;0;0;0;1;;Sunny;10729;685618;0;2022,30164;14576,94818;NonInvaded;NonInvaded_PeriUrban
+28/06/2022;Jordi;PeriUrban;Sant_Jordi;Mur_Ext_2;Snake;9:50;Point Count;38,90615841;1,378317207;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;10729;685618;0;2022,30164;14576,94818;NonInvaded;NonInvaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Sant_Jordi;Mur_Ext_2;Snake;9:09;Point Count;38,90615841;1,378317207;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;10729;685618;0;2022,30164;14576,94818;NonInvaded;NonInvaded_PeriUrban
+19/06/2022;Balma;PeriUrban;Sant_Jordi;Mur_Ext_3;Snake;12:12;Point Count;38,89315323;1,373345459;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;10729;685618;0;2022,43701;16046,89394;NonInvaded;NonInvaded_PeriUrban
+28/06/2022;Jordi;PeriUrban;Sant_Jordi;Mur_Ext_3;Snake;9:38;Point Count;38,89315323;1,373345459;0;0;1;0;0;0;0;0;0;0;0;0;0;1;;Sunny;10729;685618;0;2022,43701;16046,89394;NonInvaded;NonInvaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Sant_Jordi;Mur_Ext_3;Snake;9:25;Point Count;38,89315323;1,373345459;0;1;1;0;0;0;0;0;1;0;0;1;0;1;;Sunny;10729;685618;0;2022,43701;16046,89394;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_1;Snake;11:45;Point Count;38,92635877;1,287153996;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;854664;0,6875;2023,45105;19642,44434;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_1;Snake;11:18;Point Count;38,92635877;1,287153996;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;854664;0,6875;2023,45105;19642,44434;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;PeriUrban;Sant_Josep;Mur_Ext_2;Snake;13:27;Point Count;38,91444817;1,294165866;0;0;0;0;0;0;0;1;0;0;0;0;0;1;;Sunny;28299;854664;0,2416667;2023,90308;19579,21897;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_2;Snake;12:03;Point Count;38,91444817;1,294165866;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;854664;0,2416667;2023,90308;19579,21897;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_2;Snake;10:37;Point Count;38,91444817;1,294165866;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;28299;854664;0,2416667;2023,90308;19579,21897;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;PeriUrban;Sant_Josep;Mur_Ext_3;Snake;14:40;Point Count;38,92720805;1,29616474;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;854664;0;2023,23193;18751,49651;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_3;Snake;9:14;Point Count;38,92720805;1,29616474;1;1;0;0;0;0;0;0;0;0;1;1;0;0;;Sunny;28299;854664;0;2023,23193;18751,49651;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_3;Snake;11:38;Point Count;38,92720805;1,29616474;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;854664;0;2023,23193;18751,49651;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;PeriUrban;Sant_Josep;Mur_Ext_4;Snake;14:30;Point Count;38,92583125;1,300818544;1;2;1;0;0;0;0;1;0;0;1;2;0;2;;Sunny;28299;854664;0;2023,32202;18530,5001;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_4;Snake;8:55;Point Count;38,92583125;1,300818544;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;28299;854664;0;2023,32202;18530,5001;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Sant_Josep;Mur_Ext_4;Snake;11:30;Point Count;38,92583125;1,300818544;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;854664;0;2023,32202;18530,5001;NonInvaded;NonInvaded_PeriUrban
+13/07/2022;Jordi;PeriUrban;Sant_Mateu;Mur_Ext_3;Snake;10:57;Point Count;39,04328231;1,378255544;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2019,35254;10183,18136;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra, Jordi;PeriUrban;Sant_Mateu;Mur_Ext_3;Snake;11:46;Point Count;39,04328231;1,378255544;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2019,35254;10183,18136;Invaded;Invaded_PeriUrban
+08/07/2022;Jordi;Urban;Sant_Rafael;Wall_2;Snake;9:21;Point Count;38,96049631;1,401293498;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;2505;12811;0,3125;2020,0835;9079,755942;Invaded;Invaded_Urban
+25/06/2022;Balma;Urban;Sant_Rafael;Wall_2;Snake;10:50;Point Count;38,96049631;1,401293498;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;2505;12811;0,3125;2020,0835;9079,755942;Invaded;Invaded_Urban
+08/06/2022;Sandra, Jordi;PeriUrban;Santa_Agnes;Mur_Ext_2;Snake;12:48;Point Count;39,04169707;1,341365628;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Cloudy;438;655586;0;2020,8208;13230,60324;Invaded;Invaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Santa_Agnes;Mur_Ext_2;Snake;11:30;Point Count;39,04169707;1,341365628;0;1;0;0;0;0;0;1;0;0;0;1;0;1;;Clowdy;438;655586;0;2020,8208;13230,60324;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra,Guillem,Eva;PeriUrban;Santa_Agnes;Mur_Ext_3;Snake;14:35;Point Count;39,03451873;1,341430192;1;0;0;0;0;0;0;1;0;0;1;0;0;1;;Sunny;438;655586;0;2021,41797;13021,53276;Invaded;Invaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Santa_Agnes;Mur_Ext_3;Snake;11:45;Point Count;39,03451873;1,341430192;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Clowdy;438;655586;0;2021,41797;13021,53276;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra,Guillem,Eva;PeriUrban;Santa_Agnes;Mur_Ext_4;Snake;14:25;Point Count;39,03611227;1,328399067;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Dead Podarcis;Sunny;438;655586;0;2021,49365;14052,41088;Invaded;Invaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Santa_Agnes;Mur_Ext_4;Snake;12:17;Point Count;39,03611227;1,328399067;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;438;655586;0;2021,49365;14052,41088;Invaded;Invaded_PeriUrban
+18/06/2022;Balma;PeriUrban;Ses_Paises;Mur_Ext_3;Snake;11:41;Point Count;38,96784138;1,323126428;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1508;1518407;0,275;2022,98474;14958,03958;NonInvaded;NonInvaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Ses_Paises;Mur_Ext_3;Snake;9:40;Point Count;38,96784138;1,323126428;1;0;0;1;0;0;0;0;0;0;1;0;1;0;;Sunny;1508;1518407;0,275;2022,98474;14958,03958;NonInvaded;NonInvaded_PeriUrban
+20/06/2022;Jordi;Urban;Eivissa;Wall_2;Snake;10:40;Point Count;38,90440336;1,432276485;2;0;4;0;0;0;0;0;0;0;2;0;0;4;;Sunny;50643;223821;0;2022,75317;12400,77928;Invaded;Invaded_Urban
+06/07/2022;Jordi;Urban;Eivissa;Wall_2;Snake;10:22;Point Count;38,90440336;1,432276485;0;1;6;0;0;0;0;0;0;0;0;1;0;6;;Sunny;50643;223821;0;2022,75317;12400,77928;Invaded;Invaded_Urban
+22/07/2022;Jordi;Urban;Port_Sant_Miquel;Wall;Snake;9:26;Point Count;39,07858906;1,44068678;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;13794;0,5375;2019,99646;8908,827084;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Port_Sant_Miquel;Wall;Snake;15:55;Point Count;39,07858906;1,44068678;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;206;13794;0,5375;2019,99646;8908,827084;Invaded;Invaded_Urban
+22/07/2022;Jordi;Urban;Port_Sant_Miquel;Park;Snake;9:20;Point Count;39,07836768;1,440383528;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;206;13794;0,2375;2019,99646;8908,827084;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;Urban;Port_Sant_Miquel;Park;Snake;15:51;Point Count;39,07836768;1,440383528;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;206;13794;0,2375;2019,99646;8908,827084;Invaded;Invaded_Urban
+01/05/2022;Guillem,Eva;Urban;Sant_Joan;Church_Wall;Snake;12:04;Point Count;39,0774638;1,514128986;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;1124;0,6625;2018,12683;8146,406809;Invaded;Invaded_Urban
+09/06/2022;Sandra, Jordi;Urban;Sant_Joan;Church_Wall;Snake;10:10;Point Count;39,0774638;1,514128986;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Wasp nests in the wall;Sunny;6635;1124;0,6625;2018,12683;8146,406809;Invaded;Invaded_Urban
+01/05/2022;Guillem,Eva;Urban;Sant_Joan;Park;Snake;12:04;Point Count;39,0781662;1,514417332;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;1124;0,675;2018,12683;8146,406809;Invaded;Invaded_Urban
+09/06/2022;Sandra, Jordi;Urban;Sant_Joan;Park;Snake;10:20;Point Count;39,0781662;1,514417332;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;1124;0,675;2018,12683;8146,406809;Invaded;Invaded_Urban
+01/05/2022;Guillem,Eva;Urban;Sant_Joan;Park_2;Snake;12:04;Point Count;39,0782147;1,514172199;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;1124;0,6375;2018,12683;8146,406809;Invaded;Invaded_Urban
+09/06/2022;Sandra, Jordi;Urban;Sant_Joan;Park_2;Snake;10:23;Point Count;39,0782147;1,514172199;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;1124;0,6375;2018,12683;8146,406809;Invaded;Invaded_Urban
+01/05/2022;Guillem,Eva;Urban;Sant_Joan;Wall;Snake;12:04;Point Count;39,07837186;1,514254774;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;6635;1124;0,55;2018,12683;8146,406809;Invaded;Invaded_Urban
+09/06/2022;Sandra, Jordi;Urban;Sant_Joan;Wall;Snake;10:28;Point Count;39,07837186;1,514254774;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Wasp nests in the wall;Sunny;6635;1124;0,55;2018,12683;8146,406809;Invaded;Invaded_Urban
+19/06/2022;Balma;Urban;Sant_Jordi;Church;Snake;10:50;Point Count;38,89078928;1,396265217;0;0;0;0;4;3;0;3;1;0;4;3;0;3;;Sunny;10729;10796;0,975;2021,31702;15079,63455;Invaded;Invaded_Urban
+28/06/2022;Jordi;Urban;Sant_Jordi;Church;Snake;9:12;Point Count;38,89078928;1,396265217;0;0;0;0;2;0;0;1;1;0;2;0;0;1;;Sunny;10729;10796;0,975;2021,31702;15079,63455;Invaded;Invaded_Urban
+15/07/2022;Jordi;Urban;Sant_Jordi;Church;Snake;11:32;Point Count;38,89078928;1,396265217;1;0;1;0;0;0;0;0;0;0;1;0;0;1;;Sunny;10729;10796;0,975;2021,31702;15079,63455;Invaded;Invaded_Urban
+19/06/2022;Balma;Urban;Sant_Jordi;Park;Snake;10:30;Point Count;38,89220054;1,39596181;0;0;0;0;4;2;0;6;0;0;4;2;0;6;;Sunny;10729;10796;1;2021,31702;15079,63455;Invaded;Invaded_Urban
+28/06/2022;Jordi;Urban;Sant_Jordi;Park;Snake;9:20;Point Count;38,89220054;1,39596181;0;0;0;0;1;1;0;2;0;0;1;1;0;2;;Sunny;10729;10796;1;2021,31702;15079,63455;Invaded;Invaded_Urban
+15/07/2022;Jordi;Urban;Sant_Jordi;Park;Snake;11:15;Point Count;38,89220054;1,39596181;3;4;3;1;0;0;0;0;0;0;3;4;1;3;;Sunny;10729;10796;1;2021,31702;15079,63455;Invaded;Invaded_Urban
+15/07/2022;Jordi;Urban;Sant_Jordi;Park_2;Snake;11:21;Point Count;38,8930454;1,395879262;0;0;1;0;0;0;0;0;0;0;0;0;0;1;;Sunny;10729;10796;1;2021,35144;14869,33326;Invaded;Invaded_Urban
+19/06/2022;Balma;Urban;Sant_Jordi;Park_2;Snake;10:39;Point Count;38,8930454;1,395879262;0;0;0;0;1;0;0;0;0;0;1;0;0;0;;Sunny;10729;10796;1;2021,35144;14869,33326;Invaded;Invaded_Urban
+28/06/2022;Jordi;Urban;Sant_Jordi;Park_2;Snake;8:56;Point Count;38,8930454;1,395879262;0;0;0;0;0;1;0;0;0;0;0;1;0;0;;Sunny;10729;10796;1;2021,35144;14869,33326;Invaded;Invaded_Urban
+19/06/2022;Balma;Urban;Sant_Jordi;Wall;Snake;10:56;Point Count;38,89100779;1,397136555;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;10729;10796;1;2021,31702;15079,63455;Invaded;Invaded_Urban
+28/06/2022;Jordi;Urban;Sant_Jordi;Wall;Snake;9:04;Point Count;38,89100779;1,397136555;1;1;0;1;0;0;0;0;0;0;1;1;1;0;;Sunny;10729;10796;1;2021,31702;15079,63455;Invaded;Invaded_Urban
+15/07/2022;Jordi;Urban;Sant_Jordi;Wall;Snake;11:27;Point Count;38,89100779;1,397136555;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;10729;10796;1;2021,31702;15079,63455;Invaded;Invaded_Urban
+13/07/2022;Jordi;PeriUrban;Sant_Mateu;Mur_Ext_2;Snake;10:14;Point Count;39,04566679;1,395994036;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2019,16553;8942,719922;Invaded;Invaded_PeriUrban
+08/06/2022;Sandra, Jordi;PeriUrban;Sant_Mateu;Mur_Ext_2;Snake;10:35;Point Count;39,04566679;1,395994036;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;593;1116882;0;2019,16553;8942,719922;Invaded;Invaded_PeriUrban
+25/06/2022;Balma;Urban;Sant_Rafael;Park;Snake;10:25;Point Count;38,96186287;1,398502168;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;2505;12811;0,95;2018,40625;9290,05355;Invaded;Invaded_Urban
+08/07/2022;Jordi;Urban;Sant_Rafael;Park;Snake;9:40;Point Count;38,96186287;1,398502168;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;2505;12811;0,95;2018,40625;9290,05355;Invaded;Invaded_Urban
+08/06/2022;Sandra,Guillem,Eva;PeriUrban;Santa_Agnes;Mur_Ext_1;Snake;14:15;Point Count;39,04008679;1,329953526;1;0;0;0;0;1;0;0;0;0;1;1;0;0;;Sunny;438;655586;0;2021,33435;14117,35672;Invaded;Invaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Santa_Agnes;Mur_Ext_1;Snake;11:57;Point Count;39,04008679;1,329953526;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;438;655586;0;2021,33435;14117,35672;Invaded;Invaded_PeriUrban
+20/06/2022;Sandra;Urban;Santa_Agnes;Church_Wall;Snake;11:36;Point Count;39,03819009;1,336566998;2;1;0;0;0;0;0;2;0;0;2;1;0;2;;Sunny;438;1823;0,5;2021,34668;13327,73834;Invaded;Invaded_Urban
+08/06/2022;Sandra,Guillem;Urban;Santa_Agnes;Church_Wall;Snake;14:00;Point Count;39,03819009;1,336566998;1;0;1;0;1;2;0;0;0;0;2;2;0;1;;Sunny;438;1823;0,5;2021,34668;13327,73834;Invaded;Invaded_Urban
+20/06/2022;Sandra;Urban;Santa_Agnes;Park;Snake;11:35;Point Count;39,03820238;1,336209133;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;438;1823;0,45;2021,36157;13568,9889;Invaded;Invaded_Urban
+08/06/2022;Sandra, Jordi;Urban;Santa_Agnes;Wall_2;Snake;13:09;Point Count;39,03830138;1,335069036;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;438;1823;0,25;2020,84814;13636,23747;Invaded;Invaded_Urban
+20/06/2022;Sandra;Urban;Santa_Agnes;Wall_2;Snake;11:30;Point Count;39,03830138;1,335069036;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;438;1823;0,25;2020,84814;13636,23747;Invaded;Invaded_Urban
+04/06/2022;Sandra,Guillem,Eva;PeriUrban;Port_Sant_Miquel;Mur_Ext_3;Snake;16:35;Point Count;39,07779662;1,429943553;1;0;0;0;0;0;0;0;0;1;1;0;0;0;;Sunny;206;266914;0;2020,86707;9171,265141;Invaded;Invaded_PeriUrban
+01/07/2022;Balma;PeriUrban;Port_Sant_Miquel;Mur_Ext_3;Snake;13:50;Point Count;39,07779662;1,429943553;0;0;0;0;0;1;0;1;0;0;0;1;0;1;;Sunny;206;266914;0;2020,86707;9171,265141;Invaded;Invaded_PeriUrban
+19/06/2022;Balma;PeriUrban;Sant_Jordi;Mur_Ext_4;Snake;12:21;Point Count;38,88719684;1,368694921;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;10729;685618;0;2023,48364;16944,74773;NonInvaded;NonInvaded_PeriUrban
+05/07/2022;Jordi;PeriUrban;Sant_Jordi;Mur_Ext_4;Snake;9:38;Point Count;38,88719684;1,368694921;0;2;1;0;0;0;0;0;0;0;0;2;0;1;;Sunny;10729;685618;0;2023,48364;16944,74773;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;Urban;Sant_Josep;Wall_2;Snake;9:41;Point Count;38,92034153;1,29446634;3;0;0;0;0;0;0;0;0;0;3;0;0;0;;Sunny;28299;28804;1;2023,38599;19329,39478;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Sant_Josep;Wall_2;Snake;10:43;Point Count;38,92034153;1,29446634;2;2;0;0;0;0;0;0;0;0;2;2;0;0;;Sunny;28299;28804;1;2023,38599;19329,39478;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Sant_Josep;Wall_2;Snake;13:44;Point Count;38,92034153;1,29446634;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;28804;1;2023,38599;19329,39478;NonInvaded;NonInvaded_Urban
+08/06/2022;Sandra, Jordi;Urban;Santa_Agnes;Wall;Snake;12:59;Point Count;39,03848842;1,335612823;1;2;0;0;0;0;0;0;0;0;1;2;0;0;;Cloudy;438;1823;0,4625;2020,84814;13636,23747;Invaded;Invaded_Urban
+20/06/2022;Sandra;Urban;Santa_Agnes;Wall;Snake;11:25;Point Count;39,03848842;1,335612823;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;438;1823;0,4625;2020,84814;13636,23747;Invaded;Invaded_Urban
+21/06/2022;Balma;Urban;Sant_Josep;Church_Park;Podarcis;13:52;Point Count;38,92154856;1,293021142;0;0;0;0;0;0;0;0;0;0;0;0;0;0;People around;Sunny;28299;28804;1;2022,7998;19427,87008;NonInvaded;NonInvaded_Urban
+12/07/2022;Jordi;Urban;Sant_Josep;Church_Park;Podarcis;9:49;Point Count;38,92154856;1,293021142;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;28804;1;2022,7998;19427,87008;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Sant_Josep;Church_Park;Podarcis;10:49;Point Count;38,92154856;1,293021142;1;1;1;0;0;0;0;0;0;0;1;1;0;1;;Sunny;28299;28804;1;2022,7998;19427,87008;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Sant_Josep;Park;Podarcis;14:11;Point Count;38,92123578;1,295953877;0;0;0;0;2;0;0;0;0;0;2;0;0;0;;Sunny;28299;28804;0,8583333;2022,84351;19208,14687;NonInvaded;NonInvaded_Urban
+12/07/2022;Jordi;Urban;Sant_Josep;Park;Podarcis;9:30;Point Count;38,92123578;1,295953877;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;28804;0,8583333;2022,84351;19208,14687;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Sant_Josep;Park;Podarcis;11:06;Point Count;38,92123578;1,295953877;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;28804;0,8583333;2022,84351;19208,14687;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Sant_Josep;Wall;Podarcis;13:58;Point Count;38,92249409;1,293256253;3;3;0;0;0;0;0;0;0;0;3;3;0;0;;Sunny;28299;28804;0,9583333;2022,84351;19208,14687;NonInvaded;NonInvaded_Urban
+12/07/2022;Jordi;Urban;Sant_Josep;Wall;Podarcis;10:02;Point Count;38,92249409;1,293256253;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;28804;0,9583333;2022,84351;19208,14687;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Sant_Josep;Wall;Podarcis;10:53;Point Count;38,92249409;1,293256253;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;28299;28804;0,9583333;2022,84351;19208,14687;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;PeriUrban;Es_Cubells;Mur_Ext_1;Podarcis;10:30;Point Count;38,88629127;1,267672331;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;Sunny;908;156815;0;2023,97156;23435,80228;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Es_Cubells;Mur_Ext_1;Podarcis;10:18;Point Count;38,88629127;1,267672331;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;908;156815;0;2023,97156;23435,80228;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;PeriUrban;Es_Cubells;Mur_Ext_2;Podarcis;10:58;Point Count;38,88458165;1,269814394;2;3;2;0;1;1;0;0;0;0;3;4;0;2;;Sunny;908;156815;0,325;2023,9823;23229,7755;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Es_Cubells;Mur_Ext_2;Podarcis;10:13;Point Count;38,88458165;1,269814394;2;1;0;0;0;0;0;0;0;0;2;1;0;0;;Sunny;908;156815;0,325;2023,9823;23229,7755;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;PeriUrban;Es_Cubells;Mur_Ext_3;Podarcis;12:10;Point Count;38,88478647;1,2810761;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;908;156815;0;2023,99207;22414,62147;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Es_Cubells;Mur_Ext_3;Podarcis;9:30;Point Count;38,88478647;1,2810761;1;1;1;0;0;0;0;0;0;0;1;1;0;1;;Sunny;908;156815;0;2023,99207;22414,62147;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;PeriUrban;Es_Cubells;Mur_Ext_4;Podarcis;10:18;Point Count;38,88370526;1,263417557;2;0;3;0;0;0;0;0;0;0;2;0;0;3;;Sunny;908;156815;0;2023,88782;23783,38457;NonInvaded;NonInvaded_PeriUrban
+18/07/2022;Jordi;PeriUrban;Es_Cubells;Mur_Ext_4;Podarcis;10:23;Point Count;38,88370526;1,263417557;2;0;0;0;0;0;0;0;0;0;2;0;0;0;;Sunny;908;156815;0;2023,88782;23783,38457;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;Urban;Es_Cubells;Church_Park;Podarcis;11:10;Point Count;38,88121366;1,272059561;0;0;0;0;7;2;0;2;0;0;7;2;0;2;;Cloudy;908;194;0,5125;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Es_Cubells;Church_Park;Podarcis;9:46;Point Count;38,88121366;1,272059561;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;908;194;0,5125;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Es_Cubells;Park;Podarcis;11:17;Point Count;38,88112418;1,272474144;0;0;0;0;2;5;0;0;0;0;2;5;0;0;;Sunny;908;194;0,4875;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Es_Cubells;Park;Podarcis;10:06;Point Count;38,88112418;1,272474144;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;908;194;0,4875;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Es_Cubells;Park_2;Podarcis;11:31;Point Count;38,88110835;1,27249344;0;0;0;0;1;0;0;2;0;0;1;0;0;2;Gardeners working;Sunny;908;194;0,5875;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Es_Cubells;Park_2;Podarcis;10:02;Point Count;38,88110835;1,27249344;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;908;194;0,5875;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Es_Cubells;Wall_2;Podarcis;11:26;Point Count;38,88105572;1,272366654;3;0;0;2;3;0;0;0;0;0;6;0;2;0;;Sunny;908;194;0,5625;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+18/07/2022;Jordi;Urban;Es_Cubells;Wall_2;Podarcis;9:52;Point Count;38,88105572;1,272366654;1;1;0;0;0;0;0;0;0;0;1;1;0;0;;Sunny;908;194;0,5625;2023,9126;23315,32873;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_1;Podarcis;14:40;Point Count;38,94413111;1,298797915;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,94226;17677,68916;NonInvaded;NonInvaded_PeriUrban
+25/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_1;Podarcis;9:11;Point Count;38,94413111;1,298797915;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,94226;17677,68916;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Agusti;Mur_Ext_1;Podarcis;11:18;Point Count;38,94413111;1,298797915;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;11894;416791;0;2023,94226;17677,68916;NonInvaded;NonInvaded_PeriUrban
+18/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_2;Podarcis;14:56;Point Count;38,94108204;1,300495027;1;0;0;0;0;0;0;3;0;0;1;0;0;3;;Sunny;11894;416791;0;2023,94348;17774,21996;NonInvaded;NonInvaded_PeriUrban
+25/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_2;Podarcis;8:53;Point Count;38,94108204;1,300495027;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,94348;17774,21996;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Agusti;Mur_Ext_2;Podarcis;11:09;Point Count;38,94108204;1,300495027;1;0;1;0;0;0;0;0;0;0;1;0;0;1;;Sunny;11894;416791;0;2023,94348;17774,21996;NonInvaded;NonInvaded_PeriUrban
+18/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_3;Podarcis;13:44;Point Count;38,9378676;1,289799464;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,86316;18890,45763;NonInvaded;NonInvaded_PeriUrban
+25/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_3;Podarcis;8:28;Point Count;38,9378676;1,289799464;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,86316;18890,45763;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Agusti;Mur_Ext_3;Podarcis;11:30;Point Count;38,9378676;1,289799464;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;11894;416791;0;2023,86316;18890,45763;NonInvaded;NonInvaded_PeriUrban
+18/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_4;Podarcis;15:13;Point Count;38,94203675;1,288053071;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,19812;18698,39273;NonInvaded;NonInvaded_PeriUrban
+25/06/2022;Balma;PeriUrban;Sant_Agusti;Mur_Ext_4;Podarcis;8:41;Point Count;38,94203675;1,288053071;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;11894;416791;0;2023,19812;18698,39273;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;PeriUrban;Sant_Agusti;Mur_Ext_4;Podarcis;10:40;Point Count;38,94203675;1,288053071;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;416791;0;2023,19812;18698,39273;NonInvaded;NonInvaded_PeriUrban
+12/07/2022;Jordi;Urban;Sant_Agusti;Church_Wall;Podarcis;11:02;Point Count;38,94047551;1,2938715;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;11894;2480;0,7083333;2023,37183;18332,30969;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Sant_Agusti;Church_Wall;Podarcis;14:03;Point Count;38,94047551;1,2938715;0;1;1;0;0;0;0;0;0;0;0;1;0;1;;Sunny;11894;2480;0,7083333;2023,37183;18332,30969;NonInvaded;NonInvaded_Urban
+25/06/2022;Balma;Urban;Sant_Agusti;Church_Wall;Podarcis;9:32;Point Count;38,94047551;1,2938715;0;0;0;0;0;0;0;1;0;0;0;0;0;1;;Sunny;11894;2480;0,7083333;2023,37183;18332,30969;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Sant_Agusti;Park;Podarcis;14:08;Point Count;38,94113632;1,293936861;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;2480;0,8333333;2023,32788;18235,30485;NonInvaded;NonInvaded_Urban
+25/06/2022;Balma;Urban;Sant_Agusti;Park;Podarcis;9:38;Point Count;38,94113632;1,293936861;0;0;0;0;1;0;0;0;0;0;1;0;0;0;;Sunny;11894;2480;0,8333333;2023,32788;18235,30485;NonInvaded;NonInvaded_Urban
+12/07/2022;Jordi;Urban;Sant_Agusti;Park;Podarcis;10:54;Point Count;38,94113632;1,293936861;1;0;0;1;0;0;0;0;0;0;1;0;1;0;;Sunny;11894;2480;0,8333333;2023,32788;18235,30485;NonInvaded;NonInvaded_Urban
+12/07/2022;Jordi;Urban;Sant_Agusti;Park_2;Podarcis;10:49;Point Count;38,94049671;1,294304738;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;11894;2480;0,6;2023,37183;18332,30969;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Sant_Agusti;Park_2;Podarcis;13:57;Point Count;38,94049671;1,294304738;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;2480;0,6;2023,37183;18332,30969;NonInvaded;NonInvaded_Urban
+25/06/2022;Balma;Urban;Sant_Agusti;Park_2;Podarcis;9:27;Point Count;38,94049671;1,294304738;0;0;0;0;1;1;0;2;0;0;1;1;0;2;;Sunny;11894;2480;0,6;2023,37183;18332,30969;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;Urban;Sant_Agusti;Wall;Podarcis;14:14;Point Count;38,94113822;1,293600726;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;11894;2480;0,6666667;2023,32788;18235,30485;NonInvaded;NonInvaded_Urban
+25/06/2022;Balma;Urban;Sant_Agusti;Wall;Podarcis;9:43;Point Count;38,94113822;1,293600726;2;0;0;0;0;0;0;0;0;0;2;0;0;0;;Sunny;11894;2480;0,6666667;2023,32788;18235,30485;NonInvaded;NonInvaded_Urban
+12/07/2022;Jordi;Urban;Sant_Agusti;Wall;Podarcis;10:58;Point Count;38,94113822;1,293600726;2;1;0;0;0;0;0;0;0;0;2;1;0;0;;Sunny;11894;2480;0,6666667;2023,32788;18235,30485;NonInvaded;NonInvaded_Urban
+20/06/2022;Balma;PeriUrban;Sant_Antoni;Mur_Ext_1;Podarcis;12:51;Point Count;38,98796387;1,313982861;1;1;0;0;0;0;0;1;0;0;1;1;0;1;;Sunny;27205;9094898;0;2020,63196;15228,77764;Invaded;Invaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Sant_Antoni;Mur_Ext_1;Podarcis;11:28;Point Count;38,98796387;1,313982861;2;0;2;0;0;0;0;0;0;0;2;0;0;2;;Sunny;27205;9094898;0;2020,63196;15228,77764;Invaded;Invaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Sant_Antoni;Mur_Ext_2;Podarcis;13:36;Point Count;38,94937806;1,28750178;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;27205;9094898;0;2023,51501;18431,99507;NonInvaded;NonInvaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Sant_Antoni;Mur_Ext_2;Podarcis;11:18;Point Count;38,94937806;1,28750178;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;27205;9094898;0;2023,51501;18431,99507;NonInvaded;NonInvaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Sant_Antoni;Mur_Ext_3;Podarcis;13:54;Point Count;38,9603102;1,257305046;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;27205;9094898;0;2023,97998;20706,57857;NonInvaded;NonInvaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Sant_Antoni;Mur_Ext_3;Podarcis;10:59;Point Count;38,9603102;1,257305046;1;1;0;0;0;0;0;0;0;0;1;1;0;0;;Sunny;27205;9094898;0;2023,97998;20706,57857;NonInvaded;NonInvaded_PeriUrban
+20/06/2022;Balma;PeriUrban;Sant_Antoni;Mur_Ext_4;Podarcis;13:19;Point Count;38,95130663;1,308453445;1;0;0;0;0;1;0;0;0;0;1;1;0;0;;Sunny;27205;9094898;0;2023,94995;16703,79657;NonInvaded;NonInvaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Sant_Antoni;Mur_Ext_4;Podarcis;11:28;Point Count;38,95130663;1,308453445;0;1;0;0;0;0;0;0;0;0;0;1;0;0;;Sunny;27205;9094898;0;2023,94995;16703,79657;NonInvaded;NonInvaded_PeriUrban
+21/06/2022;Balma;Urban;Sant_Antoni;Church_Park;Podarcis;8:48;Point Count;38,98132196;1,304287082;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;27205;104047;1;2022,15515;16082,52272;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Sant_Antoni;Church_Park;Podarcis;12:05;Point Count;38,98132196;1,304287082;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;27205;104047;1;2022,15515;16082,52272;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Sant_Antoni;Park;Podarcis;8:40;Point Count;38,97911014;1,306576078;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;27205;104047;0,5375;2023,40967;15855,62232;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Sant_Antoni;Park;Podarcis;12:18;Point Count;38,97911014;1,306576078;0;2;1;0;0;0;0;0;0;0;0;2;0;1;;Sunny;27205;104047;0,5375;2023,40967;15855,62232;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Sant_Antoni;Wall;Podarcis;9:20;Point Count;38,97243385;1,304458632;1;3;1;0;0;0;0;0;0;0;1;3;0;1;;Sunny;27205;104047;0;2023,56384;16269,5696;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Sant_Antoni;Wall;Podarcis;11:35;Point Count;38,97243385;1,304458632;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;27205;104047;0;2023,56384;16269,5696;NonInvaded;NonInvaded_Urban
+19/07/2022;Jordi;Urban;Sant_Antoni;Wall_2;Podarcis;11:43;Point Count;38,9669809;1,291095522;1;0;0;0;0;0;0;0;0;0;1;0;0;0;;Sunny;27205;104047;1;2022,09839;17613,87769;NonInvaded;NonInvaded_Urban
+21/06/2022;Balma;Urban;Sant_Antoni;Wall_2;Podarcis;9:40;Point Count;38,9669809;1,291095522;1;1;0;0;1;0;0;0;0;0;2;1;0;0;;Sunny;27205;104047;1;2022,09839;17613,87769;NonInvaded;NonInvaded_Urban
+18/06/2022;Balma;PeriUrban;Ses_Paises;Mur_Ext_2;Podarcis;12:03;Point Count;38,9633702;1,34026978;0;0;0;0;0;0;0;1;0;0;0;0;0;1;;Sunny;1508;1518407;0;2023,33435;13689,52576;NonInvaded;NonInvaded_PeriUrban
+19/07/2022;Jordi;PeriUrban;Ses_Paises;Mur_Ext_2;Podarcis;9:54;Point Count;38,9633702;1,34026978;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;Sunny;1508;1518407;0;2023,33435;13689,52576;NonInvaded;NonInvaded_PeriUrban
