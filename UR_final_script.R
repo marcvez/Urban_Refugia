@@ -453,6 +453,31 @@ ggarrange(urb_complete,
 ggarrange(urb_periurb_complete, urb_urb_complete,  ncol = 2, nrow = 1)
 
 
+# with new urbanization index!!!!!!!!!!!!!!!
+Urban_Refugia_MVG_seleccio_urban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "Urban", ]
+
+urb_urb_complete <- ggplot(Urban_Refugia_MVG_seleccio_urban, aes(x = Urbanization_index )) + 
+  geom_density(fill = "grey20", alpha = 0.6, linewidth = 1) +
+  ylab("Density") +
+  xlab("Urbanisation index") +
+  theme(
+    axis.title.y = element_text(vjust = 2),
+    axis.title.x = element_text(vjust = -0.5)) 
+
+
+Urban_Refugia_MVG_seleccio_periurban <- Urban_Refugia_MVG_seleccio[Urban_Refugia_MVG_seleccio$Project == "PeriUrban", ]
+
+urb_periurb_complete <- ggplot(Urban_Refugia_MVG_seleccio_periurban, aes(x = Urbanization_index )) + 
+  geom_density(fill = "grey80", alpha = 0.6, linewidth = 1) +
+  xlim(0, 1) + 
+  ylab("Density") +
+  xlab("Urbanisation index") +
+  theme(
+    axis.title.y = element_text(vjust = 2),
+    axis.title.x = element_text(vjust = -0.5))
+
+
+ggarrange(urb_periurb_complete, urb_urb_complete,  ncol = 2, nrow = 1)
 
 
 

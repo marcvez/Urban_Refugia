@@ -13,6 +13,10 @@ Articles
 After_invasion_snake_map
 Traps_snake.xlsx
 UR_selection.csv
+UR_final_script.R
+UR_source_sink_model.R
+max_number_lizards_ibiza_inv.csv
+Podarcis_censuses_MS.csv
 *.docx
 *.tmp
 .RData
